@@ -7,7 +7,8 @@ import CardSingleNumber from '../components/CardSingleNumber';
 import DividendMonthCard from '../components/DividendMonthCard';
 import DividendTable from '../components/DividendTable';
 import InstrumentChartCard from '../components/InstrumentChartCard';
-import { ChevronLeftIcon, ChevronRightIcon, CrossIcon } from '../icons/Icons';
+
+import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 
 function DashboardYear() {
@@ -39,7 +40,7 @@ function DashboardYear() {
                             <ButtonIcon Icon={ChevronLeftIcon} />
                         </Link>
 
-                        <h1 className="text-center text-2xl text-primary">{params.year}</h1>
+                        <h1 className="text-center text-2xl text-primary tabular-nums">{params.year}</h1>
 
                         {year === currentYear ?
                             <ButtonIcon Icon={ChevronRightIcon} disabled={true} /> :
@@ -49,7 +50,7 @@ function DashboardYear() {
                         }
                     </div>
                     <Link to={`/dashboard`}>
-                        <ButtonIcon Icon={CrossIcon} />
+                        <ButtonIcon Icon={XMarkIcon} />
                     </Link>
                 </div>
 
