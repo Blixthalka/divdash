@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
+import { AppContext } from '../App';
 import ButtonIcon from '../components/ButtonIcon';
 import Card from '../components/Card';
 import CardSingleNumber from '../components/CardSingleNumber';
@@ -7,7 +8,6 @@ import DividendMonthCard from '../components/DividendMonthCard';
 import DividendTable from '../components/DividendTable';
 import InstrumentChartCard from '../components/InstrumentChartCard';
 import { ChevronLeftIcon, ChevronRightIcon, CrossIcon } from '../icons/Icons';
-import { AppContext } from '../App'
 
 
 function DashboardYear() {

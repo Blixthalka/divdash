@@ -7,7 +7,6 @@ import NoData from '../components/NoData';
 
 const UploadTag = () => {
     const [uploading, setUploading] = useState(false);
-    const [text, setText] = useState([]);
     const { setDividends } = useContext(AppContext)
     const navigate = useNavigate();
     let params = useParams();
@@ -48,7 +47,6 @@ const UploadTag = () => {
                 })
 
             setDividends(parsed)
-            setText(parsed);
             setUploading(false)
         };
         reader.readAsText(input);

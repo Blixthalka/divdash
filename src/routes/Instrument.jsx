@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+import { AppContext } from '../App';
 import Card from '../components/Card';
 import CardSingleNumber from '../components/CardSingleNumber';
 import DividendTable from '../components/DividendTable';
 import DividendYearCard from '../components/DividendYearCard';
 import NoData from '../components/NoData';
-import { AppContext } from '../App'
 
 
 function Instrument() {

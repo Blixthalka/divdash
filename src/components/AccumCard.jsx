@@ -1,8 +1,8 @@
 import ReactECharts from 'echarts-for-react';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../App';
 import Card from '../components/Card';
-import { AppContext } from '../App'
-import { sortFirstDateFirst } from '../utils/util'
+import { sortFirstDateFirst } from '../utils/util';
 
 function AccumCard({ className }) {
     const { dividends } = useContext(AppContext)
