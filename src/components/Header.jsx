@@ -1,49 +1,36 @@
-import React, { useState } from 'react';
+import { BoltIcon } from '@heroicons/react/24/outline';
+import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { CrossIcon, DashboardIcon, InstrumentIcon, LogOutIcon, MenuIcon, PortfolioIcon, TransactionIcon, UploadIcon } from '../icons/Icons';
 import Button from './Button';
 import ButtonIcon from './ButtonIcon';
-import { BoltIcon } from '@heroicons/react/24/outline';
 
 function ChartToggle({ className }) {
-    const [showMenu, setShowMenu] = useState(false);
     const navigate = useNavigate()
 
-    const iconClass = "fill-secondary group-hover:fill-primary"
-    const navs = [
-        {
-            name: "Dashboard",
-            link: "/dashboard",
-            icon: <DashboardIcon className={iconClass} />
-        },
-        {
-            name: "Instruments",
-            link: "/instruments",
-            icon: <InstrumentIcon className={iconClass} />
-        },
-        {
-            name: "Dividends",
-            link: "/dividends",
-            icon: <TransactionIcon className={iconClass} />
-        },
-        {
-            name: "Upload",
-            link: "/upload",
-            icon: <UploadIcon className={iconClass} />
-        },
-    ]
+    // const iconClass = "fill-secondary group-hover:fill-primary"
+    // const navs = [
+    //     {
+    //         name: "Dashboard",
+    //         link: "/dashboard",
+    //         icon: <DashboardIcon className={iconClass} />
+    //     },
+    //     {
+    //         name: "Instruments",
+    //         link: "/instruments",
+    //         icon: <InstrumentIcon className={iconClass} />
+    //     },
+    //     {
+    //         name: "Dividends",
+    //         link: "/dividends",
+    //         icon: <TransactionIcon className={iconClass} />
+    //     },
+    //     {
+    //         name: "Upload",
+    //         link: "/upload",
+    //         icon: <UploadIcon className={iconClass} />
+    //     },
+    // ]
 
-    const logout = () => {
-        fetch("/api/logout", {
-            method: "DELETE"
-        })
-            .then(resp => {
-                setShowMenu(false)
-                if (resp.status === 200) {
-                    navigate("/login")
-                }
-            })
-    }
 
 
     return (

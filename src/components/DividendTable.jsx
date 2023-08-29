@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../App';
 import Table from '../components/Table';
-import { first_date, last_date, sortLastDateFirst } from '../utils/util';
+import { sortLastDateFirst } from '../utils/util';
 
 
 function getSortingFun(direction, field) {

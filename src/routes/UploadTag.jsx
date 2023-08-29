@@ -1,10 +1,9 @@
+import moment from 'moment/moment';
 import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AppContext } from '../App';
 import Card from '../components/Card';
 import NoData from '../components/NoData';
-import ToastContext from '../components/ToastContex';
-import { AppContext } from '../App'
-import moment from 'moment/moment';
 
 const UploadTag = () => {
     const [uploading, setUploading] = useState(false);

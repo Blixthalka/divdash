@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../App';
 import Card from '../components/Card';
 import Chart from '../components/Chart';
-import { BarChartIcon, BarSortedChartIcon } from '../icons/Icons';
-import { first_date, last_date } from '../utils/util';
-import ButtonIcon from './ButtonIcon';
-import { AppContext } from '../App';
 const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
 

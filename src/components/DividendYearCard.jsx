@@ -1,10 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { AppContext } from '../App';
 import Card from '../components/Card';
 import Chart from '../components/Chart';
-import { BarChartIcon, BarSortedChartIcon } from '../icons/Icons';
-import ButtonIcon from './ButtonIcon';
-import { AppContext } from '../App'
 
 
 const fillData = (dividends) => {
