@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  web:
+    image: ghcr.io/blixthalka/divdash-web:master
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - core
+    volumes:
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/letsencrypt/:ro
+  core:
+    image: ghcr.io/blixthalka/divdash-core:master
+    expose:
+      - "8082"
+    volumes:
+      - "/divdash/mnesia/:/divdash/mnesia/:rw"
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
