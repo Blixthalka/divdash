@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
+import moment from 'moment/moment';
+import React, { useContext } from 'react';
+import { AppContext } from '../App';
 import AccumCard from '../components/AccumCard';
 import Card from '../components/Card';
 import CardSingleNumber from '../components/CardSingleNumber';
 import DividendTable from '../components/DividendTable';
 import DividendYearCard from '../components/DividendYearCard';
 import InstrumentChartCard from '../components/InstrumentChartCard';
-import { AppContext } from '../App'
-import moment from 'moment/moment';
 
 
 function Dashboard() {

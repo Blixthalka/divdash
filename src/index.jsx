@@ -1,21 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Dashboard from './routes/Dashboard';
-import Instruments from './routes/Instruments';
-import Dividends from './routes/Dividends';
-import Instrument from './routes/Instrument';
-import App from './App'
 import {
   BrowserRouter,
-  Routes,
   Route,
+  Routes,
 } from "react-router-dom";
+import App from './App';
+import LoggedIn from './LoggedIn';
+import './index.css';
+import Dashboard from './routes/Dashboard';
+import DashboardYear from './routes/DashboardYear';
+import Instrument from './routes/Instrument';
+import NotFound from './routes/NotFound';
 import Upload from './routes/Upload';
 import UploadTag from './routes/UploadTag';
-import DashboardYear from './routes/DashboardYear';
-import LoggedIn from './LoggedIn';
-import NotFound from './routes/NotFound';
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NoData({ data, onBarClick }) {
+function NoData() {
     return (
         <p className="text-sm text-secondary">huh, nothing here</p>
     )
