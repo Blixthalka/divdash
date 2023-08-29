@@ -4,21 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../App';
 import Button from '../components/Button';
 import Card from '../components/Card';
-import avanza from '../images/avanza.png';
 
 const Upload = () => {
     const navigate = useNavigate()
     const { dividends, setDividends } = useContext(AppContext);
     const initial_banks = [
         {
-            image: avanza,
-            coming_soon: false,
             tag: "avanza"
-        },
-        {
-            image: avanza,
-            coming_soon: true,
-            tag: "nordnet"
         }
     ]
 
