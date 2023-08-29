@@ -12,8 +12,6 @@ import { ChevronLeftIcon, ChevronRightIcon, CrossIcon } from '../icons/Icons';
 
 function DashboardYear() {
     const { dividends } = useContext(AppContext)
-
-    const [data, setData] = useState(null);
     let params = useParams();
 
     const year = parseInt(params.year);

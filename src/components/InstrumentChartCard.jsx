@@ -50,7 +50,7 @@ const IntrumentChartCard = ({ year, className }) => {
 
 
         setData(r)
-    }, [year])
+    }, [year, dividends])
 
 
     if (data.length === 0) {

@@ -12,7 +12,7 @@ function AccumCard({ className }) {
     const accum = dividends
         .sort(sortFirstDateFirst)
         .reduce((acc, val) => {
-            if (acc.length == 0) {
+            if (acc.length === 0) {
                 return [
                     {
                         date: val.date,

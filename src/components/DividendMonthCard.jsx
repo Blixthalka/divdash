@@ -30,7 +30,7 @@ function DividendMonthCard({ year, className }) {
         }
         setYearData(result)
 
-    }, [year])
+    }, [year, dividends])
 
     if (yearData === undefined || yearData.length === 0) {
         return (<></>)

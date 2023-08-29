@@ -20,8 +20,6 @@ function Dashboard() {
     .filter(dividend => dividend.date.isAfter(moment().subtract(1, 'years')))
     .reduce((acc, dividend) => acc + dividend.amount, 0)
 
-  const monthly = rolling / 12
-
 
   return (
     <div className="max-w-4xl pb-20 mx-auto">

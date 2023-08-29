@@ -18,15 +18,15 @@ function Instrument() {
     });
 
     useEffect(() => {
-        const filtered = dividends.
-            filter(div => div.isin === params.isin)
+        const filtered = dividends
+            .filter(div => div.isin === params.isin)
 
         if (filtered.length > 0) {
             setInstrument(filtered[0])
         } else {
             setInstrument(undefined)
         }
-    }, [params.isin])
+    }, [params.isin, dividends])
 
     if (!instrument) {
         return (
@@ -36,8 +36,8 @@ function Instrument() {
         )
     }
 
-    const totalAmount = dividends.
-        filter(div => div.isin === params.isin)
+    const totalAmount = dividends
+        .filter(div => div.isin === params.isin)
         .reduce((acc, val) => acc + val.amount, 0)
 
     return (

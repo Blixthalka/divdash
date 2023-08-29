@@ -29,7 +29,6 @@ const fillData = (dividends) => {
 
 function DividendYearCard({ isin, className }) {
     const [years, setYears] = useState(undefined);
-    const [biggestSort, setBiggestSort] = useState(false)
     const { dividends } = useContext(AppContext)
     let navigate = useNavigate()
 
@@ -43,7 +42,7 @@ function DividendYearCard({ isin, className }) {
 
         setYears(fillData(filtered))
 
-    }, [isin])
+    }, [isin, dividends])
 
     if (years === undefined || years === []) {
         return (<></>)
@@ -51,11 +50,7 @@ function DividendYearCard({ isin, className }) {
 
     const data = years
         .sort(function (a, b) {
-            if (biggestSort) {
-                return a.value - b.value;
-            } else {
-                return a.label - b.label;
-            }
+            return a.label - b.label;
         })
 
     return (
