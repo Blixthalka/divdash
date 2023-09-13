@@ -7,6 +7,7 @@ import CardSingleNumber from '../components/CardSingleNumber';
 import DividendTable from '../components/DividendTable';
 import DividendYearCard from '../components/DividendYearCard';
 import InstrumentChartCard from '../components/InstrumentChartCard';
+import ContributionCard from '../components/ContributionCard';
 
 
 function Dashboard() {
@@ -27,9 +28,10 @@ function Dashboard() {
 
         <CardSingleNumber title={"Rolling Year"} amount={rolling} currency={"kr"} />
         <CardSingleNumber title={"Total"} amount={total} currency={"kr"} />
-        <CardSingleNumber title={`# Dividends`} amount={dividends.length} />
+        <CardSingleNumber title={`# Dividends`} amount={dividends.length} className="" />
 
         <DividendYearCard className="sm:col-span-3" />
+        <ContributionCard className="sm:col-span-3" />
         <AccumCard className="sm:col-span-3" />
         <InstrumentChartCard className="sm:col-span-3" />
 

@@ -51,7 +51,7 @@
 }
 
 .dividends-table tr.clickable-row  {
-    @apply hover:bg-slate-100 cursor-pointer;
+    @apply hover:bg-slate-100 cursor-pointer hover:text-lime-300;
 }
 
 .dividends-table th.header-highlight {

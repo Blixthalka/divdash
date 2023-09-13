@@ -7,7 +7,7 @@ import CardSingleNumber from '../components/CardSingleNumber';
 import DividendMonthCard from '../components/DividendMonthCard';
 import DividendTable from '../components/DividendTable';
 import InstrumentChartCard from '../components/InstrumentChartCard';
-
+import ContributionCard from '../components/ContributionCard';
 import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 
@@ -60,6 +60,8 @@ function DashboardYear() {
 
                 <DividendMonthCard year={params.year} className="col-span-3" />
                 <InstrumentChartCard year={params.year} className="col-span-3" />
+                <ContributionCard className="sm:col-span-3" year={year} />
+
 
                 <Card
                     title="Dividends"

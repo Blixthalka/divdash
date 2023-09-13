@@ -61,7 +61,7 @@ function Chart({ data, onBarClick }) {
                     }
                 }),
                 type: 'bar',
-                color: '#334155',
+                color: '#1e293b',
                 emphasis: {
                     itemStyle: {
                         shadowColor: '#404040'

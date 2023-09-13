@@ -63,6 +63,12 @@ export const formatDate = (dateString) => {
   return date.getDay() + ' ' + months[date.getMonth()]
 }
 
+export const formatDateWithYear = (dateString) => {
+  var date = new Date(dateString)
+  const res = date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear()
+  return res
+}
+
 export const formatDateInput = (date) => {
   return date.getFullYear() + "-" + pad(date.getMonth() + 1) + "-" + pad(date.getDate());
 }

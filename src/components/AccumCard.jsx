@@ -3,6 +3,8 @@ import React, { useContext } from 'react';
 import { AppContext } from '../App';
 import Card from '../components/Card';
 import { sortFirstDateFirst } from '../utils/util';
+import { graphic } from 'echarts';
+
 
 function AccumCard({ className }) {
     const { dividends } = useContext(AppContext)
@@ -81,6 +83,17 @@ function AccumCard({ className }) {
                 type: 'line',
                 color: '#334155',
                 showSymbol: false,
+                areaStyle: {
+                    color: new graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgba(00, 00, 00, 0.1)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgba(00, 00, 00, 0.00)'
+                        }])
+                },
 
             }
         ]

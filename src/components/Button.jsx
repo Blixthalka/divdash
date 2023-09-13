@@ -5,7 +5,7 @@ function Button({ text, children, className, onClick, design = "primary", Icon, 
         <button
             className={`
                 cursor-pointer
-                ${design === "primary" && "bg-primary hover:bg-slate-600"}
+                ${design === "primary" && "bg-primary "}
                 ${design === "secondary" && "bg-transparent hover:bg-background border-background"}
                 ${(disabled && design === "primary") && 'hover:bg-secondary'}
                  ${xs ? "px-2" : "px-5"} py-2  rounded group min-w-fit ${className}`}
@@ -15,7 +15,7 @@ function Button({ text, children, className, onClick, design = "primary", Icon, 
             {text ?
                 <span
                     className={`
-                        ${design === "primary" && "text-white"}
+                        ${design === "primary" && "text-white group-hover:text-lime-300"}
                         ${design === "secondary" && "text-secondary group-hover:text-primary"}
                         ${(disabled && design === "secondary") && 'group-hover:text-secondary'}
                         font-medium flex items-center text-sm`}
