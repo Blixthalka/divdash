@@ -60,7 +60,7 @@ function ContributionCard({ year, className }) {
         }
 
         while (!moment_equals(cur_date, to_date)) {
-            if (cur_date.day() === 6 || cur_date.day() === 5) {
+            if (cur_date.day() === 6 || cur_date.day() === 0) {
                 cur_date = cur_date.add(1, 'days')
                 console.log("DEAD")
                 continue;
