@@ -8,7 +8,7 @@ const ButtonIcon = ({Icon, className, onClick, disabled = false}) => {
             onClick={disabled ? () => {} : onClick}
             disabled={disabled}
         >
-            <Icon className={`stroke-secondary w-6 h-6 ${disabled ? "stroke-slate-200" : "group-hover:stroke-primary group-hover:fill-lime-300"}`} />
+            <Icon className={`stroke-secondary w-6 h-6 ${disabled ? "stroke-slate-200" : "group-hover:stroke-primary "}`} />
         </button>
     );
 }
