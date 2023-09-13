@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../App';
 import { formatDateWithYear } from '../utils/util';
 import Card from './Card';
+/* eslint-disable */
 
 function moment_equals(a, b) {
     return a.year() === b.year() && a.month() === b.month() && a.date() === b.date()
