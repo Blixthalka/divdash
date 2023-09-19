@@ -90,8 +90,9 @@ function ContributionCard({ year, className }) {
 
     return (
         <Card
-            title={'Days'}
+            title={'Dividend Contributions'}
             className={`${className}`}
+            screenshot={true}
         >
             <div className="grid grid-rows-[repeat(5,1fr)] grid-flow-col gap-1 mt-3 overflow-scroll md:overflow-visible">
                 {result.map((r, i) => (

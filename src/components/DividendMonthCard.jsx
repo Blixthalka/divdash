@@ -38,8 +38,9 @@ function DividendMonthCard({ year, className }) {
 
     return (
         <Card
-            title={'Monthly'}
+            title={'Monthly Dividends'}
             className={`${className}`}
+            screenshot={true}
         >
             <Chart data={yearData} />
         </Card>

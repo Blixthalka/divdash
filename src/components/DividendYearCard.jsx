@@ -55,8 +55,9 @@ function DividendYearCard({ isin, className }) {
 
     return (
         <Card
-            title={'Yearly'}
+            title={'Yearly Dividends'}
             className={`${className}`}
+            screenshot={true}
 
         >
             <Chart data={data} onBarClick={params => navigate(`/dashboard/${params.name}`)} />

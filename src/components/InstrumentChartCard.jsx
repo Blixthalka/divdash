@@ -58,7 +58,7 @@ const IntrumentChartCard = ({ year, className }) => {
     }
 
     return (
-        <Card title={"Instruments"} className={`grid gap-2 ${className}`}>
+        <Card title={"Dividends per Instrument"} className={`grid gap-2 ${className}`}   screenshot={true}>
             <Chart
                 data={data}
                 onBarClick={(params) => navigate(`/instruments/${params.data.id}`)}

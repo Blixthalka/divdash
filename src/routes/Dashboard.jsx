@@ -36,7 +36,7 @@ function Dashboard() {
         <InstrumentChartCard className="sm:col-span-3" />
 
         <Card
-          title="Recent"
+          title="Recent Dividends"
           className="sm:col-span-3 "
         >
           <DividendTable

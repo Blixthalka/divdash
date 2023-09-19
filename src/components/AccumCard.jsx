@@ -101,7 +101,7 @@ function AccumCard({ className }) {
 
 
     return (
-        <Card title={'Accumulated'} className={`${className}`}>
+        <Card title={'Accumulated Dividends'} className={`${className}`} screenshot={true}>
             {accum &&
                 <ReactECharts
                     option={option}
