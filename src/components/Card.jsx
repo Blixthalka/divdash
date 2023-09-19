@@ -1,6 +1,8 @@
 import { CameraIcon } from '@heroicons/react/24/outline'
 import { toPng } from 'html-to-image'
 import React, { useCallback, useRef } from 'react'
+import { v4 as uuidv4 } from 'uuid';
+
 
 function Card({ title, children, className, screenshot, textClassName }) {
   const ref = useRef(null)
@@ -14,7 +16,7 @@ function Card({ title, children, className, screenshot, textClassName }) {
     toPng(ref.current, { cacheBust: true })
       .then((dataUrl) => {
         const link = document.createElement('a')
-        link.download = 'asdf.png'
+        link.download = uuidv4() + '.png'
         link.href = dataUrl
         link.click()
       })
@@ -24,7 +26,7 @@ function Card({ title, children, className, screenshot, textClassName }) {
   }, [ref])
 
   return (
-    <div ref={ref} className={` bg-white border border-slate-300 rounded p-5 ${className}`}>
+    <div  className={` bg-white border border-slate-300 rounded p-5 ${className}`}>
       {title &&
         <div className="flex justify-between ">
           <p className={`text-secondary text-sm ${textClassName}`}>{title}</p>
@@ -35,7 +37,7 @@ function Card({ title, children, className, screenshot, textClassName }) {
           )}
         </div>
       }
-      <div className="bg-white">
+      <div ref={ref} className="bg-white">
         {children}
       </div>
     </div>
