@@ -2,6 +2,7 @@ import { CameraIcon } from '@heroicons/react/24/outline'
 import { toPng } from 'html-to-image'
 import React, { useCallback, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import ButtonIcon from './ButtonIcon';
 
 
 function Card({ title, children, className, screenshot, textClassName }) {
@@ -26,18 +27,17 @@ function Card({ title, children, className, screenshot, textClassName }) {
   }, [ref])
 
   return (
-    <div  className={` bg-white border border-slate-300 rounded p-5 ${className}`}>
+    //border border-[#1D232B]
+    <div className={` bg-card  rounded p-5 ${className}`}>
       {title &&
         <div className="flex justify-between ">
           <p className={`text-secondary text-sm ${textClassName}`}>{title}</p>
           {screenshot && (
-            <button onClick={onClick} className=" hover:bg-slate-100 w-8 h-8 flex justify-center items-center rounded group">
-              <CameraIcon className="w-5 h-5 stroke-secondary  group-hover:stroke-primary" />
-            </button>
+            <ButtonIcon onClick={onClick} Icon={CameraIcon} />
           )}
         </div>
       }
-      <div ref={ref} className="bg-white">
+      <div ref={ref} className="">
         {children}
       </div>
     </div>

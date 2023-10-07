@@ -70,7 +70,7 @@ const UploadTag = () => {
                     </div> :
 
                     <div>
-                        <label className="mt-2 border border-dashed border-slate-200 p-10 relative flex justify-center cursor-pointer hover:bg-slate-50 group">
+                        <label className="mt-2 border border-dashed border-slate-200 p-10 relative flex justify-center cursor-pointer hover:bg-card-off group">
                             <input id="upload-file" type="file" onChange={(event) => {
                                 uploadFile(event.target.files[0])
                                 setTimeout(() => {

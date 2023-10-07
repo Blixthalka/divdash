@@ -15,9 +15,9 @@ function get_color(value, max) {
     const quarter = max / 4
 
     if (value === "empty") {
-        return "bg-white"
+        return "bg-transparent"
     } else if (value === 0) {
-        return "bg-gray-200"
+        return "bg-[#14222F]"
     } else if (value > (3 * quarter)) {
         return "bg-blue-900"
     } else if (value > (2 * quarter)) {
@@ -94,12 +94,12 @@ function ContributionCard({ year, className }) {
             className={`${className}`}
             screenshot={true}
         >
-            <div className="grid grid-rows-[repeat(5,1fr)] grid-flow-col gap-1 mt-3 overflow-scroll md:overflow-visible">
+            <div className="grid bg-card grid-rows-[repeat(5,1fr)] grid-flow-col gap-1 mt-3 overflow-scroll md:overflow-visible">
                 {result.map((r, i) => (
                     <div key={i} className="group relative w-max">
                         <div className={`w-3 h-3 rounded-sm ${get_color(r.value, max)}`} />
                         {r.value !== "empty" && (
-                            <div role="tooltip" className="z-10 shadow bg-white border text-sm px-2 py-1 rounded text-primary pointer-events-none absolute -top-7 left-0 w-max opacity-0 transition-opacity md:group-hover:opacity-100">
+                            <div role="tooltip" className="z-10 shadow bg-card border border-card-off text-sm px-2 py-1 rounded text-white pointer-events-none absolute -top-7 left-0 w-max opacity-0 transition-opacity md:group-hover:opacity-100">
                                 {formatDateWithYear(r.label) + " - " + r.value + " kr"}
                             </div>
                         )}

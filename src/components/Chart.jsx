@@ -1,3 +1,4 @@
+import { graphic } from 'echarts';
 import ReactECharts from 'echarts-for-react';
 import React from 'react';
 
@@ -8,9 +9,10 @@ function Chart({ data, onBarClick }) {
 
     let option = {
         textStyle: {
-            color: '#94a3b8',
+            color: '#595F6B',
             fontFamily: 'Inter, sans-serif',
         },
+        backgroundColor: '#101418',
         xAxis: {
             type: 'category',
             data: data.map(d => d.label),
@@ -23,26 +25,39 @@ function Chart({ data, onBarClick }) {
             type: 'value',
             axisLabel: {
                 fontSize: 14,
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#1D232B'
+                }
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#1D232B'
+                }
             }
         },
         tooltip: {
             trigger: 'axis',
             textStyle: {
-                fontSize: 14
+                fontSize: 14,
+                color: '#fff'
             },
             axisPointer: {
                 type: 'shadow'
             },
+            backgroundColor: '#101418',
+            borderColor: '#1D232B',
             formatter: (args) => {
                 let tooltip = `<p>${args[0].name}</p> `;
 
                 args.forEach(({ marker, value }) => {
-                      value = value || [0, 0];
-                      tooltip += `<p>${marker} <strong>${value} kr</strong></p>`;
+                    value = value || [0, 0];
+                    tooltip += `<p>${marker} <strong>${value} kr</strong></p>`;
                 });
 
                 return tooltip;
-           }
+            }
         },
         grid: {
             left: '1%',
@@ -61,11 +76,20 @@ function Chart({ data, onBarClick }) {
                     }
                 }),
                 type: 'bar',
-                color: '#1e293b',
+                itemStyle: {
+                    color: new graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: '#179BF5' },
+                        { offset: 1, color: '#1D6DAC' }
+                    ]),
+
+                    borderRadius: [3, 3, 0, 0],
+
+
+
+                },
                 emphasis: {
-                    itemStyle: {
-                        shadowColor: '#404040'
-                    }
+
+
                 },
 
             }

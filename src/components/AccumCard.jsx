@@ -45,9 +45,10 @@ function AccumCard({ className }) {
 
     let option = {
         textStyle: {
-            color: '#94a3b8',
+            color: '#595F6B',
             fontFamily: 'Inter, sans-serif',
         },
+        backgroundColor: '#101418',
         xAxis: {
             type: 'time',
 
@@ -59,16 +60,29 @@ function AccumCard({ className }) {
             type: 'value',
             axisLabel: {
                 fontSize: 14,
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#1D232B'
+                }
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#1D232B'
+                }
             }
         },
         tooltip: {
             trigger: 'axis',
             textStyle: {
-                fontSize: 14
+                fontSize: 14,
+                color: '#fff'
             },
             axisPointer: {
                 type: 'line'
-            }
+            },
+            backgroundColor: '#101418',
+            borderColor: '#1D232B',
         },
         grid: {
             left: '1%',
@@ -81,17 +95,17 @@ function AccumCard({ className }) {
             {
                 data: accum?.map(d => [d.date.format("yyyy-MM-DD"), d.amount]),
                 type: 'line',
-                color: '#334155',
+                color: '#179BF5',
                 showSymbol: false,
                 areaStyle: {
                     color: new graphic.LinearGradient(0, 0, 0, 1, [
                         {
                             offset: 0,
-                            color: 'rgba(00, 00, 00, 0.1)'
+                            color: '#14222F'
                         },
                         {
                             offset: 1,
-                            color: 'rgba(00, 00, 00, 0.00)'
+                            color: '#111519'
                         }])
                 },
 

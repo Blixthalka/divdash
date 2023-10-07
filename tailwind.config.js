@@ -5,9 +5,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#1e293b',
-        'background': '#f1f5f9',
-        'secondary': '#94a3b8',
+        'primary': '#179BF5',
+        'background': '#101418',
+        'secondary': '#595F6B',
+        'card': '#101418',
+        'card-off': '#1D232B',
         'chart-1': '#FCD757',
         'chart-1-s': '#FCDE73',
         'chart-2': '#5C415D',
@@ -17,7 +19,7 @@ module.exports = {
         'chart-4': '#E94F37',
         'chart-4-s': '#EB5D47',
         'chart-5': '#393E41',
-        'chart-5-s': '#42494C'
+        'chart-5-s': '#42494C',
       }
     },
   },

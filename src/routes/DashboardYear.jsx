@@ -40,7 +40,7 @@ function DashboardYear() {
                             <ButtonIcon Icon={ChevronLeftIcon} />
                         </Link>
 
-                        <h1 className="text-center text-2xl text-primary tabular-nums">{params.year}</h1>
+                        <h1 className="text-center text-2xl text-secondary tabular-nums">{params.year}</h1>
 
                         {year === currentYear ?
                             <ButtonIcon Icon={ChevronRightIcon} disabled={true} /> :

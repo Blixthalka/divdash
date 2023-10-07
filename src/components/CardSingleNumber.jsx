@@ -6,14 +6,14 @@ function CardSingleNumber({ title, amount, currency, className }) {
   }
 
   return (
-    <div className={` bg-primary rounded p-5 ${className}`}>
+    <div className={` bg-[#101418] rounded p-5 ${className}`}>
       {title &&
         <div className="flex justify-between">
-          <p className="text-white text-sm">{title}</p>
+          <p className="text-[#595F6B] text-sm">{title}</p>
         </div>
       }
-      <p className="text-white font-bold">
-        <span className="text-3xl">{formatNumberNoFractions(amount) + (currency ? ' ' + currency : '')}
+      <p className="text-white font-bold ">
+        <span className="text-2xl ">{formatNumberNoFractions(amount) + (currency ? ' ' + currency : '')}
         </span>
       </p>
     </div>

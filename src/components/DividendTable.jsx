@@ -34,13 +34,13 @@ function DividendTable({ sorting, setSorting, isin, search, className, sortable 
         },
         {
             name: "ISIN",
-            type: "number",
+            type: "text",
             column_value: "isin",
             f: t => t?.isin
         },
         {
             name: "Date",
-            type: "number",
+            type: "text",
             column_value: "date",
             f: t => t?.date.format("yyyy-MM-DD")
         },

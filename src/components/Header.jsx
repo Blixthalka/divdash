@@ -35,13 +35,13 @@ function ChartToggle({ className }) {
 
     return (
         <>
-            <div className={`border-b border-slate-300 bg-white px-5 ${className}`}>
+            <div className={` bg-card px-5 ${className}`}>
                 <div className="max-w-4xl mx-auto py-2 flex justify-between">
                     <div className="flex space-x-2 items-center">
                         <NavLink to="/dashboard">
                             <ButtonIcon Icon={BoltIcon} />
                         </NavLink>
-                        <span className="text-primary text-sm">divdash</span>
+                        <span className="text-white text-sm">divdash</span>
                     </div>
                     <Button text={"Add Dividends"} design="primary" onClick={(e) => navigate("/")} />
                     {/* <ButtonIcon onClick={(e) => setShowMenu(true)} Icon={MenuIcon} /> */}

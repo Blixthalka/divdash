@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../App';
 import Button from '../components/Button';
 import Card from '../components/Card';
+import ButtonIcon from '../components/ButtonIcon';
 
 const Upload = () => {
     const navigate = useNavigate()
@@ -32,21 +33,19 @@ const Upload = () => {
                 className="mb-5 grid gap-2"
             >
                 {banks.map((bank) => (
-                    <div className='p-3 bg-gray-50 border flex justify-between items-center rounded-sm'>
+                    <div className='p-3 bg-card border border-card-off flex justify-between items-center rounded-sm'>
                         <div className="">
-                            <span className="text-xl">{bank.tag.charAt(0).toUpperCase() + bank.tag.slice(1)}</span>
+                            <span className="text-xl text-white">{bank.tag.charAt(0).toUpperCase() + bank.tag.slice(1)}</span>
                             {bank.total > 0 && (
                                 <div className="flex space-x-2 items-center">
-                                    <span className="text-sm text-gray-500">Uploaded Dividends</span>
-                                    <div className="font-bold">{bank.total}</div>
+                                    <span className="text-sm text-secondary">Uploaded Dividends</span>
+                                    <div className="font-bold text-white">{bank.total}</div>
                                 </div>
                             )}
                         </div>
-                        <div className='flex space-x-2'>
+                        <div className='flex space-x-2 items-center'>
                             {bank.total > 0 && (
-                                <Button design="secondary" onClick={(e) => delete_for_tag(bank.tag)}>
-                                    <TrashIcon className="w-5 h-5 stroke-gray-500" />
-                                </Button>
+                                <ButtonIcon Icon={TrashIcon} onClick={(e) => delete_for_tag(bank.tag)} />
                             )}
                             <Button text="Upload" onClick={(e) => navigate(`/upload/${bank.tag}`)} />
                         </div>
