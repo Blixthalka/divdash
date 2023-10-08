@@ -58,6 +58,6 @@
 }
 
 .dividends-table td.header-highlight {
-    @apply text-[#979FB0]
+    @apply text-gray-400
 }
 

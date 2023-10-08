@@ -44,7 +44,11 @@ function Chart({ data, onBarClick }) {
                 color: '#fff'
             },
             axisPointer: {
-                type: 'shadow'
+                type: 'shadow',
+                shadowStyle: {
+                    color: 'rgba(0, 0, 0, 0.1)',
+
+                }
             },
             backgroundColor: '#101418',
             borderColor: '#1D232B',
@@ -83,8 +87,6 @@ function Chart({ data, onBarClick }) {
                     ]),
 
                     borderRadius: [3, 3, 0, 0],
-
-
 
                 },
                 emphasis: {

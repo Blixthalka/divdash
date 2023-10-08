@@ -12,7 +12,7 @@ function getSortingFun(direction, field) {
 
 function getSortingFunField(field) {
     if (field === "amount") {
-        return (a, b) => a.amount - b.amount
+        return (a, b) => b.amount - a.amount
     } else if (field === "date"){
         return sortLastDateFirst
     } else if (field === "name") {
