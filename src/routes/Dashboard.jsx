@@ -4,11 +4,11 @@ import { AppContext } from '../App';
 import AccumCard from '../components/AccumCard';
 import Card from '../components/Card';
 import CardSingleNumber from '../components/CardSingleNumber';
+import ContributionCard from '../components/ContributionCard';
 import DividendTable from '../components/DividendTable';
 import DividendYearCard from '../components/DividendYearCard';
+import Empty from '../components/Empty';
 import InstrumentChartCard from '../components/InstrumentChartCard';
-import ContributionCard from '../components/ContributionCard';
-
 
 function Dashboard() {
   const { dividends } = useContext(AppContext)
@@ -21,6 +21,11 @@ function Dashboard() {
     .filter(dividend => dividend.date.isAfter(moment().subtract(1, 'years')))
     .reduce((acc, dividend) => acc + dividend.amount, 0)
 
+  if (total === 0) {
+    return (
+      <Empty />
+    )
+  }
 
   return (
     <div className="max-w-4xl pb-20 mx-auto">

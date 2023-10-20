@@ -8,7 +8,7 @@ import DividendMonthCard from '../components/DividendMonthCard';
 import DividendTable from '../components/DividendTable';
 import InstrumentChartCard from '../components/InstrumentChartCard';
 import ContributionCard from '../components/ContributionCard';
-import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { ChevronRightIcon, ChevronLeftIcon, XIcon } from 'lucide-react'
 
 
 function DashboardYear() {
@@ -27,6 +27,15 @@ function DashboardYear() {
 
     const thisYear = filtered
         .reduce((acc, val) => acc + val.amount, 0)
+
+    const lastYear = dividends.filter(div => div.date.year() === (year - 1))
+        .reduce((acc, val) => acc + val.amount, 0)
+
+    let yearChange = undefined;
+    if (lastYear !== 0) {
+        yearChange = ((thisYear - lastYear) / lastYear) * 100;
+    }
+
 
     const perMonth = thisYear / 12;
 
@@ -50,11 +59,11 @@ function DashboardYear() {
                         }
                     </div>
                     <Link to={`/dashboard`}>
-                        <ButtonIcon Icon={XMarkIcon} />
+                        <ButtonIcon Icon={XIcon} />
                     </Link>
                 </div>
 
-                <CardSingleNumber title={"Year"} amount={thisYear} currency={"kr"} />
+                <CardSingleNumber title={"Year"} amount={thisYear} change={yearChange} currency={"kr"} />
                 <CardSingleNumber title={"Per Month"} amount={perMonth} currency={"kr"} />
                 <CardSingleNumber title={"# Dividends"} amount={filtered.length} />
 

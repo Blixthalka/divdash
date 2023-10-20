@@ -1,8 +1,7 @@
-import { CameraIcon } from '@heroicons/react/24/outline'
-import { toPng } from 'html-to-image'
-import React, { useCallback, useRef } from 'react'
+import { toPng } from 'html-to-image';
+import { CameraIcon } from 'lucide-react';
+import React, { useCallback, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import ButtonIcon from './ButtonIcon';
 
 
 function Card({ title, children, className, screenshot, textClassName }) {
@@ -28,16 +27,18 @@ function Card({ title, children, className, screenshot, textClassName }) {
 
   return (
     //border border-[#1D232B]
-    <div className={` bg-card  rounded p-5 ${className}`}>
+    <div ref={ref} className={`bg-card p-5 ${className}`}>
       {title &&
         <div className="flex justify-between ">
           <p className={`text-secondary text-sm ${textClassName}`}>{title}</p>
           {screenshot && (
-            <ButtonIcon onClick={onClick} Icon={CameraIcon} />
+            <button onClick={onClick}>
+              <CameraIcon className='w-4 h-4 stroke-secondary'/>
+            </button>
           )}
         </div>
       }
-      <div ref={ref} className="">
+      <div className="">
         {children}
       </div>
     </div>

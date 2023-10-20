@@ -1,4 +1,4 @@
-import { BoltIcon } from '@heroicons/react/24/outline';
+import { ZapIcon } from 'lucide-react';
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Button from './Button';
@@ -39,11 +39,11 @@ function ChartToggle({ className }) {
                 <div className="max-w-4xl mx-auto py-2 flex justify-between">
                     <div className="flex space-x-2 items-center">
                         <NavLink to="/dashboard">
-                            <ButtonIcon Icon={BoltIcon} />
+                            <ButtonIcon Icon={ZapIcon} />
                         </NavLink>
                         <span className="text-white text-sm">divdash</span>
                     </div>
-                    <Button text={"Add Dividends"} design="primary" onClick={(e) => navigate("/")} />
+                    <Button text={"Add Dividends"} design="primary" onClick={(e) => navigate("/upload")} />
                     {/* <ButtonIcon onClick={(e) => setShowMenu(true)} Icon={MenuIcon} /> */}
                 </div>
             </div>

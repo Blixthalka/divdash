@@ -1,4 +1,4 @@
-import { TrashIcon } from '@heroicons/react/24/outline';
+import { TrashIcon } from 'lucide-react';
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../App';

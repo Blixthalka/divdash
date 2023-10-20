@@ -14,6 +14,7 @@ import Instrument from './routes/Instrument';
 import NotFound from './routes/NotFound';
 import Upload from './routes/Upload';
 import UploadTag from './routes/UploadTag';
+import Index from './routes/Index';
 
 
 
@@ -24,19 +25,13 @@ ReactDOM.render(
         <Route element={<App />}>
           <Route path="/" element={<LoggedIn />} >
 
-            <Route  element={<Dashboard />} />
+            <Route index element={<Index />} />
+            <Route element={<Dashboard />} />
 
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="dashboard/:year" element={<DashboardYear />} />
-            <Route path="instruments/:isin"  element={<Instrument />}>
-              {/* <Route index element={<Instruments />} /> */}
-              {/* <Route path=":isin" element={<Instrument />} /> */}
-            </Route>
-            {/* <Route path="dividends" element={<Dividends />} /> */}
-            <Route index element={<Upload />} />
-
-
-
+            <Route path="instruments/:isin" element={<Instrument />} />
+            <Route path="upload" element={<Upload />} />
             <Route path="upload/:tag" element={<UploadTag />} />
             <Route path="*" element={<NotFound />} />
           </Route>

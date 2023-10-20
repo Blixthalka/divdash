@@ -1,6 +1,6 @@
 import { formatNumberNoFractions } from '../utils/util';
 
-function CardSingleNumber({ title, amount, currency, className }) {
+function CardSingleNumber({ title, amount, currency, change, className }) {
   if (amount === undefined || amount === null) {
     amount = 0
   }
@@ -12,9 +12,15 @@ function CardSingleNumber({ title, amount, currency, className }) {
           <p className="text-[#595F6B] text-sm">{title}</p>
         </div>
       }
-      <p className="text-white font-bold ">
-        <span className="text-2xl ">{formatNumberNoFractions(amount) + (currency ? ' ' + currency : '')}
+      <p className="flex flex-wrap items-center justify-between">
+        <span className="text-2xl text-white font-bold">
+          {formatNumberNoFractions(amount) + (currency ? ' ' + currency : '')}
         </span>
+        {change && (
+          <span className='text-primary px-2 py-1 bg-[#14222F] rounded-lg font-medium'>
+            {(change > 0 ? '+ ' : '- ') + formatNumberNoFractions(change).replace('-', '') + ' %'}
+          </span>
+        )}
       </p>
     </div>
   );
