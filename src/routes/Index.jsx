@@ -3,7 +3,7 @@ import { BarChartIcon, LayersIcon, LockIcon, Share2Icon } from 'lucide-react';
 import { NavLink } from "react-router-dom";
 import Button from "../components/Button";
 import Card from "../components/Card";
-import screenshot from '../images/screenshot5.png';
+import screenshot from './../images/screenshot.png';
 
 
 const Index = function () {
