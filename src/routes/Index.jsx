@@ -39,14 +39,14 @@ const Index = function () {
                         <LockIcon className="w-5 h-5 mr-3 stroke-primary" />
                         <p className="text-lg font-medium">Secure</p>
                     </div>
-                    <p className="text-secondary">Your data stays in your browsers local storage.</p>
+                    <p className="text-secondary">Your data stays in your browser.</p>
                 </Card>
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">
                         <Share2Icon className="w-5 h-5 mr-3 stroke-primary" />
                         <p className="text-lg font-medium">Share</p>
                     </div>
-                    <p className="text-secondary">Easy to share to your socials, if you want.</p>
+                    <p className="text-secondary">A breeze to share to your socials.</p>
                 </Card>
             </div>
             <div className={"my-32"}>
@@ -54,7 +54,7 @@ const Index = function () {
             </div>
             <div className="text-white flex-col flex items-center space-y-3">
                 <span className="text-xl">by <a href="https://twitter.com/blixthalka" className="text-blue-400 hover:text-blue-500 cursor-pointer">@blixthalka</a></span>
-                <span className="text-secondary">Don't hesitate to send me some suggestion/feedback on twitter!</span>
+                <span className="text-secondary">Don't hesitate to send me some suggestions or feedback on twitter!</span>
             </div>
 
         </div>
