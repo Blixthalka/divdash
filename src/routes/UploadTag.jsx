@@ -7,7 +7,7 @@ import NoData from '../components/NoData';
 
 const UploadTag = () => {
     const [uploading, setUploading] = useState(false);
-    const { setDividends } = useContext(AppContext)
+    const { setDividends, settings } = useContext(AppContext)
     const navigate = useNavigate();
     let params = useParams();
 
@@ -23,6 +23,14 @@ const UploadTag = () => {
                 <NoData />
             </Card>
         )
+    }
+
+    function findNewIsin(isin) {
+        const matching = settings.merge.filter(merge => merge.from_isin === isin)
+        if (matching.length > 0) {
+            return matching[0].to_isin
+        }
+        return isin;
     }
 
     const uploadFile = (file) => {
@@ -41,7 +49,7 @@ const UploadTag = () => {
                         quantity: parseFloat(row[4]),
                         dividend: parseFloat(row[5]),
                         amount: parseFloat(row[6]),
-                        isin: row[9],
+                        isin: findNewIsin(row[9]),
                         tag: params.tag
                     }
                 })

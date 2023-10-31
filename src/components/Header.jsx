@@ -1,4 +1,4 @@
-import { ZapIcon } from 'lucide-react';
+import { SettingsIcon, ZapIcon } from 'lucide-react';
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Button from './Button';
@@ -43,7 +43,13 @@ function ChartToggle({ className }) {
                         </NavLink>
                         <span className="text-white text-sm">divdash</span>
                     </div>
-                    <Button text={"Add Dividends"} design="primary" onClick={(e) => navigate("/upload")} />
+                    <div className='flex items-center space-x-3'>
+
+                        <Button text={"Add Dividends"} design="primary" onClick={(e) => navigate("/upload")} />
+                        <NavLink to="/settings">
+                            <ButtonIcon Icon={SettingsIcon} />
+                        </NavLink>
+                    </div>
                     {/* <ButtonIcon onClick={(e) => setShowMenu(true)} Icon={MenuIcon} /> */}
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDownIcon, ChevronUpIcon } from '../icons/Icons';
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
 
 

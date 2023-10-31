@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDownIcon, ChevronUpIcon } from '../icons/Icons';
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import './Table.css';
 
 function Table({ headers, sorting, onSortChange, dataList, className, sortable = true, selectable = false }) {

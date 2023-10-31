@@ -15,6 +15,7 @@ import NotFound from './routes/NotFound';
 import Upload from './routes/Upload';
 import UploadTag from './routes/UploadTag';
 import Index from './routes/Index';
+import Settings from './routes/Settings';
 
 
 
@@ -33,6 +34,7 @@ ReactDOM.render(
             <Route path="instruments/:isin" element={<Instrument />} />
             <Route path="upload" element={<Upload />} />
             <Route path="upload/:tag" element={<UploadTag />} />
+            <Route path="settings" element={<Settings />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Route>

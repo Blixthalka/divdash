@@ -7,7 +7,7 @@ import moment from 'moment/moment';
 export const AppContext = createContext();
 
 
-function fetchLocalStorage() {
+function fetchDividendsLocalStorage() {
     const json = localStorage.getItem("dividends");
     if (!json) {
         return []
@@ -27,9 +27,21 @@ function fetchLocalStorage() {
         })
 }
 
+function fetchSettingsLocalStorage() {
+    const json = localStorage.getItem("settings");
+    if (!json) {
+        return {
+            merge: []
+        }
+    }
+
+    return JSON.parse(json)
+}
+
 
 function App() {
-    const [dividends, setDividends] = useState(fetchLocalStorage());
+    const [dividends, setDividends] = useState(fetchDividendsLocalStorage());
+    const [settings, setSettings] = useState(fetchSettingsLocalStorage())
 
 
     function setDiv(divs) {
@@ -37,10 +49,18 @@ function App() {
         setDividends(divs)
     }
 
+
+    function setSet(sett) {
+        localStorage.setItem("settings", JSON.stringify(sett));
+        setSettings(sett)
+    }
+
     return (
         <AppContext.Provider value={{
             dividends: dividends,
-            setDividends: setDiv
+            settings: settings,
+            setDividends: setDiv,
+            setSettings: setSet
         }}>
             <ToastContextProvider>
                 <Outlet />

@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react';
-import { CheckIcon, CrossIcon } from '../icons/Icons';
+import { CheckIcon, CrossIcon } from 'lucide-react';
 
 const ToastContext = createContext()
 
