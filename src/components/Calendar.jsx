@@ -32,7 +32,7 @@ function AccumCard({ className, year }) {
             const isin = loop.value[0].isin
 
             const ret = []
-            for(let i = 0; i < 12; i++) {
+            for (let i = 0; i < 12; i++) {
                 const match = loop.value.filter(v => v.date.month() === i)
                 const amount = match.reduce((acc, val) => acc + val.amount, 0)
                 ret.push(amount)
@@ -53,24 +53,29 @@ function AccumCard({ className, year }) {
             const nameA = a.label.toUpperCase(); // ignore upper and lowercase
             const nameB = b.label.toUpperCase(); // ignore upper and lowercase
             if (nameA < nameB) {
-              return -1;
+                return -1;
             }
             if (nameA > nameB) {
-              return 1;
+                return 1;
             }
 
             // names must be equal
             return 0;
-          })
+        })
 
         console.log(r)
         const total = [];
-        for(let i = 0; i < 12; i++) {
+        for (let i = 0; i < 12; i++) {
             const tot = r.map(instr => instr.months[i]).reduce((acc, val) => acc + val, 0)
             total.push(tot)
         }
 
-        setData({months: r, total: total})
+
+        setData({
+            months: r,
+            total: total,
+            total_total: total.reduce((acc, val) => acc + val, 0)
+        })
     }, [year, dividends])
 
 
@@ -109,6 +114,10 @@ function AccumCard({ className, year }) {
                         {data.total.map(tot_month => (
                             <td className='text-white text-right font-bold border border-card-off p-2'>{tot_month === 0 ? "" : tot_month}</td>
                         ))}
+                    </tr>
+                    <tr>
+                        <td className='text-white  font-bold border border-card-off p-2'>Total Year</td>
+                        <td className='text-white text-right   font-bold border border-card-off p-2'>{data.total_total}</td>
                     </tr>
                 </tbody>
 
