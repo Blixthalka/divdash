@@ -34,18 +34,18 @@ const Settings = () => {
             <Card className={"mb-5"}>
                 <div className='flex space-x-3 w-full items-center text-sm border-card-off text-secondary '>
                     <InfoIcon className='w-5 h-5 stroke-primary flex-shrink-0' />
-                    <span>You need to reupload files for changes to take effect.</span>
+                    <span>You need to reupload files for changes here to take effect.</span>
                 </div>
             </Card>
 
             <Card>
                 <div className='flex flex-col space-y-1.5 col-span-2'>
-                    <p className='text-white text-lg font-medium'>Merge Shares</p>
-                    <p className='text-secondary text-sm'>If you  want to see dividends from two shares as one share you can merge them here.</p>
+                    <p className='text-white text-lg font-medium'>Merge Stocks</p>
+                    <p className='text-secondary text-sm'>If you  want to see dividends from two different stocks as one stock you can merge them to one here.</p>
 
                 </div>
 
-                <p className='mt-5 mb-1.5 text-secondary'>Add</p>
+                <p className='mt-5 mb-1.5 text-secondary text-sm'>Add a stock isin here</p>
                 <div className='flex space-x-3  items-center'>
                     <input
                         className={inputClazz}
@@ -53,7 +53,7 @@ const Settings = () => {
                         value={fromIsin}
                         onChange={(e) => setFromIsin(e.target.value)}
                     />
-                    <MoveRightIcon className='stroke-secondary' />
+                    <MoveRightIcon className='stroke-secondary ' />
                     <input
                         className={inputClazz}
                         placeholder='isin to'
@@ -68,7 +68,7 @@ const Settings = () => {
 
                 {settings.merge.length > 0 && (
                     <>
-                        <p className='mt-5 mb-1.5 text-secondary'>Added</p>
+                        <p className='mt-5 mb-1.5 text-secondary text-sm'>Added</p>
                         <div className='grid gap-3 '>
                             {settings.merge.map((merge, index) => (
                                 <div className='flex space-x-3 items-center'>

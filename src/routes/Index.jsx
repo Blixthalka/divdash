@@ -53,7 +53,7 @@ const Index = function () {
                 <img src={screenshot} className="border border-card-off rounded-lg" alt="divdash dashboard" />
             </div>
             <div className="text-white flex-col flex items-center space-y-3">
-                <span className="text-xl">by <a href="https://twitter.com/blixthalka" className="text-blue-400 hover:text-blue-500 cursor-pointer">@blixthalka</a></span>
+                <span className="">Made by <a href="https://twitter.com/blixthalka" className="text-blue-400 hover:text-blue-500 cursor-pointer">@blixthalka</a></span>
                 <span className="text-secondary">Don't hesitate to send me some suggestions or feedback on twitter!</span>
             </div>
 
