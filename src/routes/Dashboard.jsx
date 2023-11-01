@@ -28,7 +28,7 @@ function Dashboard() {
   }
 
   return (
-    <div className="max-w-4xl pb-20 mx-auto">
+    <div className="max-w-5xl pb-20 mx-auto">
       <div className="grid sm:grid-cols-3 gap-5 ">
 
         <CardSingleNumber title={"Rolling Year"} amount={rolling} currency={"kr"} />
@@ -52,6 +52,8 @@ function Dashboard() {
             className="mt-2"
           />
         </Card>
+
+
 
       </div>
 

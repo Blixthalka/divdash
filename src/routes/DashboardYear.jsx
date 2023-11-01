@@ -9,7 +9,7 @@ import DividendTable from '../components/DividendTable';
 import InstrumentChartCard from '../components/InstrumentChartCard';
 import ContributionCard from '../components/ContributionCard';
 import { ChevronRightIcon, ChevronLeftIcon, XIcon } from 'lucide-react'
-
+import Calendar from '../components/Calendar'
 
 function DashboardYear() {
     const { dividends } = useContext(AppContext)
@@ -41,7 +41,7 @@ function DashboardYear() {
 
 
     return (
-        <div className="max-w-4xl pb-20 mx-auto">
+        <div className="max-w-5xl pb-20 mx-auto">
             <div className="grid grid-cols-3 gap-5 ">
                 <div className="col-span-3 flex items-center justify-between">
                     <div className="flex items-center space-x-2 ">
@@ -69,8 +69,9 @@ function DashboardYear() {
 
                 <DividendMonthCard year={params.year} className="col-span-3" />
                 <InstrumentChartCard year={params.year} className="col-span-3" />
-                <ContributionCard className="sm:col-span-3" year={year} />
+                <ContributionCard className="col-span-3" year={year} />
 
+                <Calendar className={"col-span-3"} year={year}/>
 
                 <Card
                     title="Dividends"
@@ -85,8 +86,8 @@ function DashboardYear() {
                     />
                 </Card>
 
-            </div>
 
+            </div>
         </div>
     );
 }

@@ -36,7 +36,7 @@ function ChartToggle({ className }) {
     return (
         <>
             <div className={` bg-card px-5 ${className}`}>
-                <div className="max-w-4xl mx-auto py-2 flex justify-between">
+                <div className="max-w-5xl mx-auto py-2 flex justify-between">
                     <div className="flex space-x-2 items-center">
                         <NavLink to="/dashboard">
                             <ButtonIcon Icon={ZapIcon} />
@@ -55,7 +55,7 @@ function ChartToggle({ className }) {
             </div>
             {/* {showMenu &&
                 <nav className="absolute top-0 right-0 bg-white w-full h-full z-10">
-                    <div className="max-w-4xl mx-auto py-2 flex flex-col">
+                    <div className="max-w-5xl mx-auto py-2 flex flex-col">
                         <div className="flex justify-between items-center">
                             <div className="flex space-x-2 items-center">
                                 <ButtonIcon Icon={PortfolioIcon} disabled={true} />
