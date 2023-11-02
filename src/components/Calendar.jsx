@@ -105,7 +105,7 @@ function AccumCard({ className, year }) {
                         <tr>
                             <td className='text-white font-normal border border-card-off p-2'>{instr.label}</td>
                             {instr.months.map(m => (
-                                <td className='text-secondary text-right font-normal border border-card-off p-2'>{m === 0 ? "" : m}</td>
+                                <td className='text-secondary hover:text-white text-right font-normal border border-card-off p-2'>{m === 0 ? "" : m}</td>
                             ))}
                         </tr>
                     ))}

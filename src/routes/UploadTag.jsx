@@ -4,10 +4,56 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AppContext } from '../App';
 import Card from '../components/Card';
 import NoData from '../components/NoData';
+import { InfoIcon } from 'lucide-react';
+
+
+function findNewIsin(settings, isin) {
+    const matching = settings.merge.filter(merge => merge.from_isin === isin)
+    if (matching.length > 0) {
+        return matching[0].to_isin
+    }
+    return isin;
+}
+
+
+const parseAvanza = (fileText, settings) => {
+    return fileText.split('\n')
+        .map(row => row.split(';'))
+        .filter(row => row[2] === 'Utdelning')
+        .map(row => {
+            return {
+                date: moment(row[0], "YYYY-MM-DD"),
+                name: row[3],
+                quantity: parseFloat(row[4]),
+                dividend: parseFloat(row[5]),
+                amount: parseFloat(row[6]),
+                isin: findNewIsin(settings, row[9]),
+                tag: "avanza"
+            }
+        })
+}
+
+const parseNordnet = (fileText, settings) => {
+    return fileText.split('\n')
+        .map(row => row.split('\t'))
+        .filter(row => row[5] === 'UTDELNING' || row[5] === 'MAK UTDELNING')
+        .map(row => {
+            return {
+                date: moment(row[3], "YYYY-MM-DD"),
+                name: row[6],
+                quantity: parseFloat(row[9].replace(" ", "")),
+                dividend: parseFloat(row[10].replace(" ", "")),
+                amount: parseFloat(row[14].replace(" ", "")),
+                isin: findNewIsin(settings, row[8]),
+                tag: "nordnet"
+            }
+        })
+}
+
 
 const UploadTag = () => {
     const [uploading, setUploading] = useState(false);
-    const { setDividends, settings } = useContext(AppContext)
+    const { dividends, setDividends, settings } = useContext(AppContext)
     const navigate = useNavigate();
     let params = useParams();
 
@@ -25,13 +71,7 @@ const UploadTag = () => {
         )
     }
 
-    function findNewIsin(isin) {
-        const matching = settings.merge.filter(merge => merge.from_isin === isin)
-        if (matching.length > 0) {
-            return matching[0].to_isin
-        }
-        return isin;
-    }
+
 
     const uploadFile = (file) => {
         setUploading(true)
@@ -39,22 +79,19 @@ const UploadTag = () => {
         const reader = new FileReader();
         reader.onload = function (e) {
             const fileText = e.target.result;
-            const parsed = fileText.split('\n')
-                .map(row => row.split(';'))
-                .filter(row => row[2] === 'Utdelning')
-                .map(row => {
-                    return {
-                        date: moment(row[0], "YYYY-MM-DD"),
-                        name: row[3],
-                        quantity: parseFloat(row[4]),
-                        dividend: parseFloat(row[5]),
-                        amount: parseFloat(row[6]),
-                        isin: findNewIsin(row[9]),
-                        tag: params.tag
-                    }
-                })
 
-            setDividends(parsed)
+            let parsed = [];
+            if (params.tag === "avanza") {
+                parsed = parseAvanza(fileText, settings)
+            } else if (params.tag === "nordnet") {
+                parsed = parseNordnet(fileText, settings)
+            }
+
+            const newDivs = dividends
+                .filter(d => d.tag !== params.tag)
+                .concat(parsed)
+
+            setDividends(newDivs)
             setUploading(false)
         };
         reader.readAsText(input);
@@ -66,6 +103,12 @@ const UploadTag = () => {
 
     return (
         <div className="grid gap-5">
+             <Card className={""}>
+                <div className='flex space-x-3 w-full items-center text-sm border-card-off text-secondary '>
+                    <InfoIcon className='w-5 h-5 stroke-primary flex-shrink-0' />
+                    <span>Make sure you expand the date span when exporting the file so all dividends is exported.</span>
+                </div>
+            </Card>
             <Card title={`Download file @ ${capitalizeFirstLetter(params.tag)} -> ${desc}`} >
 
 
