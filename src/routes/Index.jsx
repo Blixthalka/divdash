@@ -64,7 +64,7 @@ const Index = function () {
             </div>
 
 
-            <div className='my-32 '>
+            <div className='my-32 border border-card-off p-20 '>
                 <h3 className='text-2xl text-white text-center font-medium'>Get going in three easy steps</h3>
                 <div className='text-white   grid gap-10 mt-20 sm:grid-cols-3 '>
                     <div className="text-white ">

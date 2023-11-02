@@ -22,7 +22,6 @@ function DashboardYear() {
         direction: "desc"
     });
 
-
     const filtered = dividends.filter(div => div.date.year() === year)
 
     const thisYear = filtered
