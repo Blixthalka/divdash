@@ -26,7 +26,6 @@ function Card({ title, children, className, screenshot, textClassName }) {
   }, [ref])
 
   return (
-    //border border-[#1D232B]
     <div ref={ref} className={`bg-card p-5 ${className}`}>
       {title &&
         <div className="flex justify-between ">

@@ -3,8 +3,9 @@ import { BarChartIcon, LayersIcon, LockIcon, Share2Icon } from 'lucide-react';
 import { NavLink } from "react-router-dom";
 import Button from "../components/Button";
 import Card from "../components/Card";
+import Avanza from '../images/avanza.svg';
+import Nordnet from '../images/nordnet.svg';
 import screenshot from './../images/screenshot.png';
-
 
 const Index = function () {
     return (
@@ -18,40 +19,89 @@ const Index = function () {
                     </Button>
                 </NavLink>
             </div>
+            <div className={"my-32"}>
+                <img src={screenshot} className="border border-card-off rounded-lg" alt="divdash dashboard" />
+            </div>
 
             <div className="grid md:grid-cols-2  my-32 gap-10">
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">
                         <BarChartIcon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-lg font-medium">Charts</p>
+                        <p className="text-xl font-medium">Charts</p>
                     </div>
                     <p className="text-secondary">An abundance of charts to explore.</p>
                 </Card>
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">
                         <LayersIcon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-lg font-medium">Aggregate</p>
+                        <p className="text-xl font-medium">Aggregate</p>
                     </div>
                     <p className="text-secondary">Have multiple banks? No problem.</p>
                 </Card>
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">
                         <LockIcon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-lg font-medium">Secure</p>
+                        <p className="text-xl font-medium">Secure</p>
                     </div>
                     <p className="text-secondary">Your data stays in your browser.</p>
                 </Card>
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">
                         <Share2Icon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-lg font-medium">Share</p>
+                        <p className="text-xl font-medium">Share</p>
                     </div>
                     <p className="text-secondary">A breeze to share to your socials.</p>
                 </Card>
             </div>
-            <div className={"my-32"}>
-                <img src={screenshot} className="border border-card-off rounded-lg" alt="divdash dashboard" />
+
+
+            <div className='my-32 '>
+                <h3 className='text-white text-2xl font-medium mb-20 text-center'>Use your favourite bank</h3>
+                <div className='grid gap-20 grid-cols-2 place-items-center mx-auto'>
+                    <img src={Avanza} alt="Avanza" className='p-5 h-24' />
+                    <img src={Nordnet} alt="Nordnet" className='p-5 h-20' />
+                </div>
             </div>
+
+
+            <div className='my-32 '>
+                <h3 className='text-2xl text-white text-center font-medium'>Get going in three easy steps</h3>
+                <div className='text-white   grid gap-10 mt-20 sm:grid-cols-3 '>
+                    <div className="text-white ">
+                        <div className="flex  items-center mb-3">
+                            <p className="text-xl font-medium">1. Download</p>
+
+                        </div>
+                        <p className="text-secondary">Get a transaction file from your bank.</p>
+                    </div>
+                    <div className="text-white ">
+                        <div className="flex  items-center mb-3">
+
+                            <p className="text-xl font-medium">2. Upload</p>
+
+                        </div>
+                        <p className="text-secondary">Upload the transaction file here.</p>
+                    </div>
+                    <div className="text-white ">
+                        <div className="flex items-center mb-3">
+
+                            <p className="text-xl font-medium">3. Enjoy!</p>
+                        </div>
+                        <p className="text-secondary">Watch your satisfying dividend staples.</p>
+                    </div>
+                </div>
+                <div className='pt-20 flex justify-center'>
+                    <NavLink to="/upload">
+                        <Button>
+                            Take me to the upload
+                        </Button>
+                    </NavLink>
+                </div>
+            </div>
+
+
+
+
             <div className="text-white flex-col flex items-center space-y-3">
                 <span className="">Made by <a href="https://twitter.com/blixthalka" className="text-blue-400 hover:text-blue-500 cursor-pointer">@blixthalka</a></span>
                 <span className="text-secondary">Don't hesitate to send me some suggestions or feedback on twitter!</span>
