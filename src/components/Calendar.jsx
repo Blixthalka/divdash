@@ -3,6 +3,7 @@ import { AppContext } from '../App';
 import Card from '../components/Card';
 import { demoDividends } from '../utils/demo';
 import { months } from './DividendMonthCard';
+import { formatNumberNoFractions } from '../utils/util';
 
 function Calendar({ className, demo, year }) {
     const { dividends } = useContext(AppContext)
@@ -104,19 +105,19 @@ function Calendar({ className, demo, year }) {
                         <tr className='group'>
                             <td className='text-white font-normal border border-card-off p-2'>{instr.label}</td>
                             {instr.months.map(m => (
-                                <td className='text-secondary group-hover:text-white text-right font-normal border border-card-off p-2'>{m === 0 ? "" : m}</td>
+                                <td className='text-secondary group-hover:text-white text-right font-normal border border-card-off p-2'>{m === 0 ? "" : formatNumberNoFractions(m)}</td>
                             ))}
                         </tr>
                     ))}
                     <tr>
                         <td className='text-white  font-bold border border-card-off p-2'>Total</td>
                         {data.total.map(tot_month => (
-                            <td className='text-white text-right font-bold border border-card-off p-2'>{tot_month === 0 ? "" : tot_month}</td>
+                            <td className='text-white text-right font-bold border border-card-off p-2'>{tot_month === 0 ? "" : formatNumberNoFractions(tot_month)}</td>
                         ))}
                     </tr>
                     <tr>
                         <td className='text-white  font-bold border border-card-off p-2'>Total Year</td>
-                        <td className='text-white text-right   font-bold border border-card-off p-2'>{data.total_total}</td>
+                        <td className='text-white text-right   font-bold border border-card-off p-2'>{formatNumberNoFractions(data.total_total)}</td>
                     </tr>
                 </tbody>
 

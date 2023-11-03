@@ -53,33 +53,7 @@ const Index = function () {
             </div>
 
 
-            <div className={"my-32  sm:hidden"}>
-                <img src={screenshot} className="border border-card-off rounded-lg" alt="divdash dashboard" />
-            </div>
 
-            <div className='my-32'>
-                <div className='flex justify-center flex-col space-y-3 items-center mb-5'>
-                    <div className='flex space-x-1.5  text-xl font-medium'>
-                        <span className='text-white'>{"Component"}</span>
-                        <span className='text-primary'>{selectedDemo + 1}</span>
-                        <span className='text-white'>of</span>
-                        <span className='text-white'>{demoItems.length}</span>
-                    </div>
-
-
-                    <div className='flex'>
-                        <ButtonIcon
-                            Icon={ChevronLeft}
-                            onClick={() => setSelectedDemo(selectedDemo === 0 ? demoItems.length - 1 : selectedDemo - 1)}
-                        />
-                        <ButtonIcon
-                            Icon={ChevronRight}
-                            onClick={() => setSelectedDemo(selectedDemo === demoItems.length - 1 ? 0 : selectedDemo + 1)}
-                        />
-                    </div>
-                </div>
-                {demoItems[selectedDemo].component}
-            </div>
 
             <div className="grid md:grid-cols-2  my-32 gap-10">
                 <Card className="text-white ">
@@ -110,6 +84,34 @@ const Index = function () {
                     </div>
                     <p className="text-secondary">A breeze to share to your socials.</p>
                 </Card>
+            </div>
+
+            <div className={"my-32 sm:hidden"}>
+                <img src={screenshot} className="border border-card-off rounded-lg" alt="divdash dashboard" />
+            </div>
+
+            <div className='my-32 hidden sm:block'>
+                <div className='flex justify-center flex-col space-y-3 items-center mb-5'>
+                    <div className='flex space-x-1.5  text-xl font-medium'>
+                        <span className='text-white'>{"Component"}</span>
+                        <span className='text-primary'>{selectedDemo + 1}</span>
+                        <span className='text-white'>of</span>
+                        <span className='text-white'>{demoItems.length}</span>
+                    </div>
+
+
+                    <div className='flex'>
+                        <ButtonIcon
+                            Icon={ChevronLeft}
+                            onClick={() => setSelectedDemo(selectedDemo === 0 ? demoItems.length - 1 : selectedDemo - 1)}
+                        />
+                        <ButtonIcon
+                            Icon={ChevronRight}
+                            onClick={() => setSelectedDemo(selectedDemo === demoItems.length - 1 ? 0 : selectedDemo + 1)}
+                        />
+                    </div>
+                </div>
+                {demoItems[selectedDemo].component}
             </div>
 
 
