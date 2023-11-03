@@ -1,90 +1,89 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../App';
 import Card from '../components/Card';
+import { demoDividends } from '../utils/demo';
 import { months } from './DividendMonthCard';
 
-function AccumCard({ className, year }) {
+function Calendar({ className, demo, year }) {
     const { dividends } = useContext(AppContext)
-    const [data, setData] = useState([]);
 
-    useEffect(() => {
+    let divsToUse = dividends;
+    if (demo) {
+        divsToUse = demoDividends()
+    }
+    console.log(divsToUse)
 
-        const valid = dividends
-            .filter(div => year ? div.date.year() === parseInt(year) : true)
-            .filter(div => div.isin)
+    const valid = divsToUse
+        .filter(div => year ? div.date.year() === parseInt(year) : true)
+        .filter(div => div.isin)
 
-        const map = new Map();
-        valid.forEach(div => {
-            let list = [];
-            if (map.has(div.isin)) {
-                list = map.get(div.isin)
-            }
-            list.push(div)
-            map.set(div.isin, list)
-        })
-
-
-        let result = [];
-        let it = map.values()
-        let loop = it.next()
-        while (!loop.done) {
-            const name = loop.value[0].name
-            const isin = loop.value[0].isin
-
-            const ret = []
-            for (let i = 0; i < 12; i++) {
-                const match = loop.value.filter(v => v.date.month() === i)
-                const amount = match.reduce((acc, val) => acc + val.amount, 0)
-                ret.push(amount)
-            }
-
-            const val = {
-                label: name.slice(0, 4),
-                name: name,
-                id: isin,
-                months: ret
-            }
-
-            result.push(val)
-            loop = it.next()
+    const map = new Map();
+    valid.forEach(div => {
+        let list = [];
+        if (map.has(div.isin)) {
+            list = map.get(div.isin)
         }
+        list.push(div)
+        map.set(div.isin, list)
+    })
 
-        const r = result.sort((a, b) => {
-            const nameA = a.label.toUpperCase(); // ignore upper and lowercase
-            const nameB = b.label.toUpperCase(); // ignore upper and lowercase
-            if (nameA < nameB) {
-                return -1;
-            }
-            if (nameA > nameB) {
-                return 1;
-            }
 
-            // names must be equal
-            return 0;
-        })
+    let result = [];
+    let it = map.values()
+    let loop = it.next()
+    while (!loop.done) {
+        const name = loop.value[0].name
+        const isin = loop.value[0].isin
 
-        console.log(r)
-        const total = [];
+        const ret = []
         for (let i = 0; i < 12; i++) {
-            const tot = r.map(instr => instr.months[i]).reduce((acc, val) => acc + val, 0)
-            total.push(tot)
+            const match = loop.value.filter(v => v.date.month() === i)
+            const amount = match.reduce((acc, val) => acc + val.amount, 0)
+            ret.push(amount)
         }
 
+        const val = {
+            label: name.slice(0, 4),
+            name: name,
+            id: isin,
+            months: ret
+        }
 
-        setData({
-            months: r,
-            total: total,
-            total_total: total.reduce((acc, val) => acc + val, 0)
-        })
-    }, [year, dividends])
+        result.push(val)
+        loop = it.next()
+    }
+
+    const r = result.sort((a, b) => {
+        const nameA = a.label.toUpperCase();
+        const nameB = b.label.toUpperCase();
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+
+        return 0;
+    })
+
+    const total = [];
+    for (let i = 0; i < 12; i++) {
+        const tot = r.map(instr => instr.months[i]).reduce((acc, val) => acc + val, 0)
+        total.push(tot)
+    }
+
+
+    const data = {
+        months: r,
+        total: total,
+        total_total: total.reduce((acc, val) => acc + val, 0)
+    }
+
 
 
     if (data.length === 0) {
         return (<></>)
     }
-
-
-
 
 
 
@@ -102,10 +101,10 @@ function AccumCard({ className, year }) {
                 </thead>
                 <tbody>
                     {data.months.map(instr => (
-                        <tr>
+                        <tr className='group'>
                             <td className='text-white font-normal border border-card-off p-2'>{instr.label}</td>
                             {instr.months.map(m => (
-                                <td className='text-secondary hover:text-white text-right font-normal border border-card-off p-2'>{m === 0 ? "" : m}</td>
+                                <td className='text-secondary group-hover:text-white text-right font-normal border border-card-off p-2'>{m === 0 ? "" : m}</td>
                             ))}
                         </tr>
                     ))}
@@ -127,4 +126,4 @@ function AccumCard({ className, year }) {
     );
 }
 
-export default AccumCard;
+export default Calendar;

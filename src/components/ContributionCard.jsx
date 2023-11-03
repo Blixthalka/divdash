@@ -1,7 +1,8 @@
 
 import moment from 'moment/moment';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../App';
+import { demoDividends } from '../utils/demo';
 import { formatDateWithYear } from '../utils/util';
 import Card from './Card';
 /* eslint-disable */
@@ -29,61 +30,58 @@ function get_color(value, max) {
     }
 }
 
-function ContributionCard({ year, className }) {
+function ContributionCard({ year, demo, className }) {
     const { dividends } = useContext(AppContext)
-    const [result, setResult] = useState(undefined)
-    const [max, setMax] = useState(undefined)
 
+    let divsToUse = dividends;
+    if (demo) {
+        divsToUse = demoDividends()
+    }
 
+    let from_date;
+    let to_date;
+    if (year) {
+        from_date = moment("" + year + "-01-01")
+        to_date = moment("" + year + "-12-31").add(1, 'days')
+    } else {
+        from_date = new moment().subtract(1, 'years')
+        to_date = new moment().add(1, 'days')
+    }
 
-    useEffect(() => {
-        let from_date;
-        let to_date;
-        if (year) {
-            from_date = moment("" + year + "-01-01")
-            to_date = moment("" + year + "-12-31").add(1, 'days')
-        } else {
-            from_date = new moment().subtract(1, 'years')
-            to_date = new moment().add(1, 'days')
-        }
+    const data = divsToUse.filter(div => div.date.isAfter(from_date) && div.date.isBefore(to_date))
+    const res = []
 
+    let cur_date = from_date;
 
-        const data = dividends.filter(div => div.date.isAfter(from_date) && div.date.isBefore(to_date))
+    let i = 0
+    while (i < cur_date.day()) {
+        res.push({ label: "", value: "empty" })
+        i++;
+    }
 
-        const res = []
-
-        let cur_date = from_date;
-
-        let i = 0
-        while (i < cur_date.day()) {
-            res.push({ label: "", value: "empty" })
-            i++;
-        }
-
-        while (!moment_equals(cur_date, to_date)) {
-            if (cur_date.day() === 6 || cur_date.day() === 0) {
-                cur_date = cur_date.add(1, 'days')
-                console.log("DEAD")
-                continue;
-            }
-            res.push(
-                {
-                    label: cur_date.format("YYYY-MM-DD"),
-                    value: data
-                        .filter(div => {
-                            return moment_equals(div.date, cur_date)
-                        })
-                        .reduce((acc, val) => acc + val.amount, 0)
-                }
-            )
+    while (!moment_equals(cur_date, to_date)) {
+        if (cur_date.day() === 6 || cur_date.day() === 0) {
             cur_date = cur_date.add(1, 'days')
+            continue;
         }
+        res.push(
+            {
+                label: cur_date.format("YYYY-MM-DD"),
+                value: data
+                    .filter(div => {
+                        return moment_equals(div.date, cur_date)
+                    })
+                    .reduce((acc, val) => acc + val.amount, 0)
+            }
+        )
+        cur_date = cur_date.add(1, 'days')
+    }
 
-        setResult(res)
-        setMax(res.reduce((acc, val) => val.value > acc ? val.value : acc, 0))
-    }, [year, dividends])
+    const result = res
+    const max = res.reduce((acc, val) => val.value > acc ? val.value : acc, 0)
 
-    if(!result) {
+
+    if (!result) {
         return (<></>)
     }
 

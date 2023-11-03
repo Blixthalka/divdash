@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { AppContext } from '../App';
 import Card from '../components/Card';
 import Chart from '../components/Chart';
-
+import { demoDividends } from '../utils/demo';
 
 const fillData = (dividends) => {
     const lastYear = new Date().getFullYear();
@@ -27,24 +27,25 @@ const fillData = (dividends) => {
 }
 
 
-function DividendYearCard({ isin, className }) {
-    const [years, setYears] = useState(undefined);
+function DividendYearCard({ isin, demo, className }) {
     const { dividends } = useContext(AppContext)
     let navigate = useNavigate()
 
-    useEffect(() => {
-        const filtered = dividends.filter(d => {
-            if (isin) {
-                return d.isin === isin
-            }
-            return true;
-        })
+    let divsToUse = dividends;
+    if (demo) {
+        divsToUse = demoDividends()
+    }
 
-        setYears(fillData(filtered))
+    const filtered = divsToUse.filter(d => {
+        if (isin) {
+            return d.isin === isin
+        }
+        return true;
+    })
 
-    }, [isin, dividends])
+    const years = fillData(filtered)
 
-    if (years === undefined || years === []) {
+    if (years === undefined) {
         return (<></>)
     }
 

@@ -4,14 +4,17 @@ import { AppContext } from '../App';
 import Card from '../components/Card';
 import { sortFirstDateFirst } from '../utils/util';
 import { graphic } from 'echarts';
+import { demoDividends } from '../utils/demo';
 
-
-function AccumCard({ className }) {
+function AccumCard({ className, demo }) {
     const { dividends } = useContext(AppContext)
 
+    let divsToUse = dividends;
+    if (demo) {
+        divsToUse = demoDividends()
+    }
 
-
-    const accum = dividends
+    const accum = divsToUse
         .sort(sortFirstDateFirst)
         .reduce((acc, val) => {
             if (acc.length === 0) {
