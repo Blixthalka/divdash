@@ -59,28 +59,28 @@ const Index = function () {
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">
                         <BarChartIcon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-xl font-medium">Charts</p>
+                        <p className="text-lg font-medium">Charts</p>
                     </div>
                     <p className="text-secondary">An abundance of charts to explore.</p>
                 </Card>
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">
                         <LayersIcon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-xl font-medium">Aggregate</p>
+                        <p className="text-lg font-medium">Aggregate</p>
                     </div>
                     <p className="text-secondary">Have multiple banks? No problem.</p>
                 </Card>
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">
                         <LockIcon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-xl font-medium">Secure</p>
+                        <p className="text-lg font-medium">Secure</p>
                     </div>
                     <p className="text-secondary">Your data stays in your browser.</p>
                 </Card>
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">
                         <Share2Icon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-xl font-medium">Share</p>
+                        <p className="text-lg font-medium">Share</p>
                     </div>
                     <p className="text-secondary">A breeze to share to your socials.</p>
                 </Card>
@@ -93,10 +93,7 @@ const Index = function () {
             <div className='my-32 hidden sm:block'>
                 <div className='flex justify-center flex-col space-y-3 items-center mb-5'>
                     <div className='flex space-x-1.5  text-xl font-medium'>
-                        <span className='text-white'>{"Component"}</span>
-                        <span className='text-primary'>{selectedDemo + 1}</span>
-                        <span className='text-white'>of</span>
-                        <span className='text-white'>{demoItems.length}</span>
+                        <span className='text-white'>{"How it coud look lite"}</span>s
                     </div>
 
 
@@ -116,7 +113,7 @@ const Index = function () {
 
 
             <div className='my-32'>
-                <h3 className='text-white text-2xl font-medium mb-10 sm:mb-20 text-center'>Use your favourite bank</h3>
+                <h3 className='text-white text-xl font-medium mb-10 sm:mb-20 text-center'>Use your favourite bank</h3>
                 <div className='grid gap-5 sm:gap-20 grid-cols-2 place-items-center mx-auto'>
                     <img src={Avanza} alt="Avanza" className='p-5 h-24' />
                     <img src={Nordnet} alt="Nordnet" className='p-5 h-20' />
@@ -127,11 +124,11 @@ const Index = function () {
 
 
             <div className='my-32 border border-card-off p-5 sm:p-20 '>
-                <h3 className='text-2xl text-white text-center font-medium'>Get going in three easy steps</h3>
+                <h3 className='text-xl text-white text-center font-medium'>Get going in three easy steps</h3>
                 <div className='text-white   grid gap-10 mt-10 sm:mt-20 sm:grid-cols-3 '>
                     <div className="text-white ">
                         <div className="flex  items-center mb-3">
-                            <p className="text-xl font-medium">1. Download</p>
+                            <p className="text-lg font-medium">1. Download</p>
 
                         </div>
                         <p className="text-secondary">Get a transaction file from your bank.</p>
@@ -139,7 +136,7 @@ const Index = function () {
                     <div className="text-white ">
                         <div className="flex  items-center mb-3">
 
-                            <p className="text-xl font-medium">2. Upload</p>
+                            <p className="text-lg font-medium">2. Upload</p>
 
                         </div>
                         <p className="text-secondary">Upload the transaction file here.</p>
@@ -147,7 +144,7 @@ const Index = function () {
                     <div className="text-white ">
                         <div className="flex items-center mb-3">
 
-                            <p className="text-xl font-medium">3. Enjoy!</p>
+                            <p className="text-lg font-medium">3. Enjoy!</p>
                         </div>
                         <p className="text-secondary">Watch your satisfying dividend staples.</p>
                     </div>
