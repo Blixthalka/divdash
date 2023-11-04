@@ -3,8 +3,8 @@ import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AppContext } from '../App';
 import Card from '../components/Card';
+import Info from '../components/Info';
 import NoData from '../components/NoData';
-import { InfoIcon } from 'lucide-react';
 
 
 function findNewIsin(settings, isin) {
@@ -103,12 +103,8 @@ const UploadTag = () => {
 
     return (
         <div className="grid gap-5">
-             <Card className={""}>
-                <div className='flex space-x-3 w-full items-center text-sm border-card-off text-secondary '>
-                    <InfoIcon className='w-5 h-5 stroke-primary flex-shrink-0' />
-                    <span>Make sure you expand the date span when exporting the file so all dividends is exported.</span>
-                </div>
-            </Card>
+            <Info text={"Make sure you expand the date span when exporting the file so all dividends is exported.∏"} />
+
             <Card title={`Download file @ ${capitalizeFirstLetter(params.tag)} -> ${desc}`} >
 
 

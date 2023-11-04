@@ -1,9 +1,10 @@
 
-import { InfoIcon, MoveRightIcon, PlusIcon, Trash2Icon } from 'lucide-react';
+import { MoveRightIcon, PlusIcon, Trash2Icon } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../App';
 import ButtonIcon from '../components/ButtonIcon';
 import Card from '../components/Card';
+import Info from '../components/Info';
 
 const Settings = () => {
     const [fromIsin, setFromIsin] = useState("")
@@ -31,12 +32,8 @@ const Settings = () => {
     const inputClazz = 'bg-transparent border-card-off border px-3 py-2 text-white placeholder:text-secondary rounded text-sm flex-grow outline-blue-900 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-input';
     return (
         <>
-            <Card className={"mb-5"}>
-                <div className='flex space-x-3 w-full items-center text-sm border-card-off text-secondary '>
-                    <InfoIcon className='w-5 h-5 stroke-primary flex-shrink-0' />
-                    <span>You need to reupload files for changes here to take effect.</span>
-                </div>
-            </Card>
+            <Info className="mb-5" text={"You need to reupload files for changes here to take effect."} />
+
 
             <Card>
                 <div className='flex flex-col space-y-1.5 col-span-2'>
@@ -46,14 +43,14 @@ const Settings = () => {
                 </div>
 
                 <p className='mt-5 mb-1.5 text-secondary text-sm'>Add a stock isin here</p>
-                <div className='flex space-x-3  items-center'>
+                <div className='grid sm:flex space-y-3 sm:space-y-0 sm:space-x-3 items-center'>
                     <input
                         className={inputClazz}
                         placeholder='isin from'
                         value={fromIsin}
                         onChange={(e) => setFromIsin(e.target.value)}
                     />
-                    <MoveRightIcon className='stroke-secondary ' />
+                    <MoveRightIcon className='stroke-secondary w-5 h-5' />
                     <input
                         className={inputClazz}
                         placeholder='isin to'
@@ -63,22 +60,19 @@ const Settings = () => {
                     <ButtonIcon Icon={PlusIcon} onClick={() => addToSettings()} />
                 </div>
 
-
-
-
                 {settings.merge.length > 0 && (
                     <>
                         <p className='mt-5 mb-1.5 text-secondary text-sm'>Added</p>
                         <div className='grid gap-3 '>
                             {settings.merge.map((merge, index) => (
-                                <div className='flex space-x-3 items-center'>
+                                <div className='grid sm:flex space-y-3 sm:space-y-0 sm:space-x-3 items-center'>
                                     <input
                                         className={inputClazz}
                                         placeholder='isin from'
                                         value={merge.from_isin}
                                         disabled
                                     />
-                                    <MoveRightIcon className='stroke-secondary' />
+                                    <MoveRightIcon className='stroke-secondary w-5 h-5' />
                                     <input
                                         className={inputClazz}
                                         placeholder='isin from'

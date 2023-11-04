@@ -3,6 +3,7 @@ import { CameraIcon, Maximize, XIcon } from 'lucide-react';
 import React, { useCallback, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import ButtonIcon from './ButtonIcon';
+import Info from './Info';
 
 
 function Card({ title, zoomedTitle, children, className, screenshot, textClassName, settings }) {
@@ -45,8 +46,9 @@ function Card({ title, zoomedTitle, children, className, screenshot, textClassNa
         {children}
       </div>
       {show && (
-        <div className='fixed top-0 left-0 h-full w-full p-10 bg-[#0C0F11] z-10 mx-auto'>
-          <div className='flex space-x-3 justify-center items-center w-full mb-10'>
+        <div className='fixed top-0 left-0 h-full w-full p-10 bg-[#0C0F11] z-10 mx-auto '>
+          <Info text={"You can resize the window to resize the final screenshot."} className="max-w-md mx-auto" />
+          <div className='flex space-x-3 justify-center items-center w-full my-5'>
             {settings}
             <ButtonIcon Icon={CameraIcon} onClick={onClick} />
             <ButtonIcon Icon={XIcon} onClick={() => setShow(false)} />

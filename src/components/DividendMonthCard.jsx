@@ -49,7 +49,7 @@ function DividendMonthCard({ year, demo, className }) {
     return (
         <Card
             title={'Monthly Dividends'}
-            zoomedTitle={`Monthly Dividends ${showCompare ? (year - 1) + " vs " + year : year}`}
+            zoomedTitle={showCompare ? undefined : `Monthly Dividends ${year}`}
             className={`${className}`}
             screenshot={true}
             settings={<ButtonIcon
