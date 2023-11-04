@@ -1,6 +1,7 @@
 import { graphic } from 'echarts';
 import ReactECharts from 'echarts-for-react';
 import React from 'react';
+import { formatNumberNoFractions } from '../utils/util';
 
 function Chart({ data, dataName, compare, compareName, onBarClick }) {
     if (!data || data.length === 0) {
@@ -25,6 +26,9 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
             type: 'value',
             axisLabel: {
                 fontSize: 14,
+                formatter: function (value, i) {
+                    return formatNumberNoFractions(value)
+                }
             },
             splitLine: {
                 lineStyle: {
@@ -56,10 +60,20 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
 
                 args.forEach(({ marker, value, seriesName }) => {
                     value = value || 0;
-                    tooltip += `<p>${marker} <span>${seriesName.includes("series") ? "" : seriesName}<span> <strong>${value} kr</strong></p>`;
+                    tooltip += `<p>${marker} <span>${seriesName.includes("series") ? "" : seriesName}<span> <strong>${formatNumberNoFractions(value)} kr</strong></p>`;
                 });
 
                 return tooltip;
+            },
+            rich: {
+                yearStyle: {
+                    // Make yearly text more standing out
+                    color: '#000',
+                    fontWeight: 'bold'
+                },
+                monthStyle: {
+                    color: '#999'
+                }
             }
         },
         grid: {
@@ -82,8 +96,8 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
                 type: 'bar',
                 itemStyle: {
                     color: new graphic.LinearGradient(0, 0, 0, 1, [
-                        { offset: 0, color: 'rgba(20, 34, 47, 0.7)' },
-                        { offset: 1, color: 'rgba(29, 35, 43, 0.7)' }
+                        { offset: 0, color: '#fb923c' },
+                        { offset: 1, color: '#8A4D1A' }
                     ]),
                     borderRadius: [3, 3, 0, 0],
                 },
@@ -101,7 +115,7 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
                 itemStyle: {
                     color: new graphic.LinearGradient(0, 0, 0, 1, [
                         { offset: 0, color: '#179BF5' },
-                        { offset: 1, color: '#1D6DAC' }
+                        { offset: 1, color: '#0E568E' }
                     ]),
 
                     borderRadius: [3, 3, 0, 0],
@@ -123,12 +137,24 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
 
 
     return (
-        <ReactECharts
-            option={option}
-            notMerge={true}
-            lazyUpdate={true}
-            onEvents={onEvents}
-        />
+        <div>
+            {compare && <div className='flex items-center space-x-5 text-white text-sm'>
+                <span className='flex space-x-2 items-center'>
+                    <p className='w-3 h-3 bg-[#179BF5] rounded-full' />
+                    <span className=''>{dataName}</span>
+                </span>
+                <span className='flex space-x-2 items-center'>
+                    <p className='w-3 h-3 bg-orange-400 rounded-full' />
+                    <span className=''>{compareName}</span>
+                </span>
+            </div>}
+            <ReactECharts
+                option={option}
+                notMerge={true}
+                lazyUpdate={true}
+                onEvents={onEvents}
+            />
+        </div>
     );
 }
 

@@ -5,16 +5,8 @@ import Card from '../components/Card';
 import Chart from '../components/Chart';
 import { demoDividends } from '../utils/demo';
 
-const IntrumentChartCard = ({ year, demo,  className }) => {
-    const { dividends } = useContext(AppContext)
-    const navigate = useNavigate();
-
-    let divsToUse = dividends;
-    if (demo) {
-        divsToUse = demoDividends()
-    }
-
-    const valid = divsToUse
+function calculate(dividends, year) {
+    const valid = dividends
         .filter(div => year ? div.date.year() === parseInt(year) : true)
         .filter(div => div.isin)
 
@@ -48,10 +40,19 @@ const IntrumentChartCard = ({ year, demo,  className }) => {
         loop = it.next()
     }
 
-    const data = result.sort((a, b) => a.value - b.value)
+    return result.sort((a, b) => a.value - b.value)
+}
 
+const IntrumentChartCard = ({ year, demo, className }) => {
+    const { dividends } = useContext(AppContext)
+    const navigate = useNavigate();
 
+    let divsToUse = dividends;
+    if (demo) {
+        divsToUse = demoDividends()
+    }
 
+    const data = calculate(divsToUse, year)
 
 
     if (data.length === 0) {
@@ -62,6 +63,7 @@ const IntrumentChartCard = ({ year, demo,  className }) => {
         <Card title={"Dividends per Stock"} className={`grid gap-2 ${className}`} screenshot={true}>
             <Chart
                 data={data}
+                dataName={year}
                 onBarClick={(params) => navigate(`/instruments/${params.data.id}`)}
             />
         </Card>

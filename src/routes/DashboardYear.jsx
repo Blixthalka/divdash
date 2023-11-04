@@ -1,15 +1,15 @@
+import { BinaryIcon, CalendarIcon, ChevronLeftIcon, ChevronRightIcon, XIcon } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import { AppContext } from '../App';
 import ButtonIcon from '../components/ButtonIcon';
+import Calendar from '../components/Calendar';
 import Card from '../components/Card';
 import CardSingleNumber from '../components/CardSingleNumber';
+import ContributionCard from '../components/ContributionCard';
 import DividendMonthCard from '../components/DividendMonthCard';
 import DividendTable from '../components/DividendTable';
 import InstrumentChartCard from '../components/InstrumentChartCard';
-import ContributionCard from '../components/ContributionCard';
-import { ChevronRightIcon, ChevronLeftIcon, XIcon, CalendarIcon, SigmaIcon } from 'lucide-react'
-import Calendar from '../components/Calendar'
 
 function DashboardYear() {
     const { dividends } = useContext(AppContext)
@@ -35,9 +35,7 @@ function DashboardYear() {
         yearChange = ((thisYear - lastYear) / lastYear) * 100;
     }
 
-
     const perMonth = thisYear / 12;
-
 
     return (
         <div className="max-w-5xl pb-20 mx-auto">
@@ -78,7 +76,7 @@ function DashboardYear() {
                 <CardSingleNumber
                     title={"# Dividends"}
                     amount={filtered.length}
-                    Icon={SigmaIcon}
+                    Icon={BinaryIcon}
                 />
 
                 <DividendMonthCard year={params.year} className="col-span-3" />

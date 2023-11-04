@@ -20,6 +20,9 @@ const Index = function () {
 
     const demoItems = [
         {
+            component: <DividendMonthCard year={2023} demo={true} />
+        },
+        {
             component: <Calendar year={2023} demo={true} />,
         },
         {
@@ -33,9 +36,6 @@ const Index = function () {
         },
         {
             component: <DividendYearCard demo={true} />
-        },
-        {
-            component: <DividendMonthCard year={2023} demo={true} />
         }
     ]
 

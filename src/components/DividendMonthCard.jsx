@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../App';
 import Card from '../components/Card';
 import Chart from '../components/Chart';
 import { demoDividends } from '../utils/demo';
+import ButtonIcon from './ButtonIcon';
+import { ZapIcon, ZapOffIcon } from 'lucide-react';
 export const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
 
@@ -29,8 +31,8 @@ function calculate(dividends, year) {
 
 
 function DividendMonthCard({ year, demo, className }) {
-    const { dividends } = useContext(AppContext)
-
+    const { dividends } = useContext(AppContext);
+    const [showCompare, setShowCompare] = useState(true);
 
     let divsToUse = dividends;
     if (demo) {
@@ -47,15 +49,27 @@ function DividendMonthCard({ year, demo, className }) {
     return (
         <Card
             title={'Monthly Dividends'}
+            zoomedTitle={`Monthly Dividends ${showCompare ? (year - 1) + " vs " + year : year}`}
             className={`${className}`}
             screenshot={true}
+            settings={<ButtonIcon
+                Icon={showCompare ? ZapIcon : ZapOffIcon}
+                onClick={() => setShowCompare(!showCompare)}
+            />}
         >
-            <Chart
-                data={yearData}
-                dataName={year}
-                compare={prevYearData}
-                compareName={year - 1}
-            />
+
+            {showCompare
+                ? <Chart
+                    data={yearData}
+                    dataName={year}
+                    compare={prevYearData}
+                    compareName={year - 1}
+                />
+                : <Chart
+                    data={yearData}
+                    dataName={year}
+                />}
+
         </Card>
     );
 }

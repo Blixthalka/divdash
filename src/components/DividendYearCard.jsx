@@ -27,7 +27,7 @@ const fillData = (dividends) => {
 }
 
 
-function DividendYearCard({ isin, demo, className }) {
+function DividendYearCard({ name, isin, demo, className }) {
     const { dividends } = useContext(AppContext)
     let navigate = useNavigate()
 
@@ -56,7 +56,8 @@ function DividendYearCard({ isin, demo, className }) {
 
     return (
         <Card
-            title={'Yearly Dividends'}
+            title={`Dividends`}
+            zoomedTitle={`Dividends ${name ? name : ""}`}
             className={`${className}`}
             screenshot={true}
 

@@ -46,7 +46,7 @@ function Instrument() {
                 {/* <p className="text-3xl font-bold text-primary">{instrument.instrument_name}</p> */}
             </CardSingleNumber>
             <CardSingleNumber title={"Total"} amount={totalAmount} currency="kr" />
-            <DividendYearCard isin={instrument.isin} className="col-span-3" />
+            <DividendYearCard isin={instrument.isin} name={instrument.name} className="col-span-3" />
             <Card title={"Dividends"} className="col-span-3">
                 <DividendTable
                     sorting={sorting}
