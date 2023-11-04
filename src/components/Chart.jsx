@@ -137,7 +137,7 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
 
 
     return (
-        <div>
+        <div className=''>
             {compare && <div className='flex items-center space-x-5 text-white text-sm'>
                 <span className='flex space-x-2 items-center'>
                     <p className='w-3 h-3 bg-orange-400 rounded-full' />

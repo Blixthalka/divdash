@@ -1,4 +1,4 @@
-import { BinaryIcon, RotateCwIcon, SigmaIcon } from 'lucide-react';
+import { BinaryIcon, SigmaIcon } from 'lucide-react';
 import moment from 'moment/moment';
 import React, { useContext } from 'react';
 import { AppContext } from '../App';
@@ -22,6 +22,16 @@ function Dashboard() {
     .filter(dividend => dividend.date.isAfter(moment().subtract(1, 'years')))
     .reduce((acc, dividend) => acc + dividend.amount, 0)
 
+  const prevRolling = dividends
+    .filter(dividend => dividend.date.isAfter(moment().subtract(2, 'years'))
+      && dividend.date.isBefore(moment().subtract(1, 'years')))
+    .reduce((acc, dividend) => acc + dividend.amount, 0)
+
+  const growth = ((rolling -prevRolling) / prevRolling) * 100
+
+  console.log(prevRolling)
+
+
   if (total === 0) {
     return (
       <Empty />
@@ -31,10 +41,9 @@ function Dashboard() {
   return (
     <div className="max-w-5xl pb-20 mx-auto">
       <div className="grid sm:grid-cols-3 gap-5 ">
-
-        <CardSingleNumber title={"Rolling Year"} amount={rolling} currency={"kr"} Icon={RotateCwIcon} />
+        <CardSingleNumber title={"Rolling Year"} amount={rolling} currency={"kr"} change={growth} />
         <CardSingleNumber title={"Total"} amount={total} currency={"kr"} Icon={SigmaIcon} />
-        <CardSingleNumber title={`# Dividends`} amount={dividends.length} className="" Icon={BinaryIcon} />
+        <CardSingleNumber title={`# Dividends`} amount={dividends.length} Icon={BinaryIcon} />
 
         <DividendYearCard className="sm:col-span-3" />
         <ContributionCard className="sm:col-span-3" />

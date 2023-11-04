@@ -13,16 +13,16 @@ function CardSingleNumber({ title, amount, currency, change, className, Icon }) 
         </div>
       }
       <p className="flex flex-wrap items-center justify-between">
-        <span className="text-2xl text-white font-bold">
+        <span className="text-2xl text-white font-bold ">
           {formatNumberNoFractions(amount) + (currency ? ' ' + currency : '')}
         </span>
         {change && (
-          <span className={`text-primary px-2 py-1 bg-[#14222F] rounded-lg font-medium ${change > 0 ? "text-primary" : "text-red-500"}`}>
+          <span className={`hidden md:block text-primary px-2 py-1 bg-[#14222F] rounded-lg font-medium ${change > 0 ? "text-primary" : "text-red-500"}`}>
             {(change > 0 ? '+ ' : '- ') + formatNumberNoFractions(change).replace('-', '') + ' %'}
           </span>
         )}
         {Icon && (
-          <div className='bg-[#14222F] p-2 rounded'>
+          <div className='bg-[#14222F] p-2 rounded hidden md:block '>
             <Icon className="stroke-primary w-5 h-5" />
           </div>
         )}

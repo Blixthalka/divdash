@@ -91,7 +91,7 @@ function ContributionCard({ year, demo, className }) {
             title={'Dividend Contributions'}
             className={`${className}`}
         >
-            <div className="grid bg-card grid-rows-[repeat(5,1fr)] grid-flow-col gap-1 mt-3 overflow-scroll md:overflow-visible">
+            <div className="grid bg-card grid-rows-[repeat(5,1fr)] grid-flow-col gap-1 mt-3 overflow-scroll lg:overflow-visible">
                 {result.map((r, i) => (
                     <div key={i} className="group relative w-max">
                         <div className={`w-3 h-3 rounded-sm ${get_color(r.value, max)}`} />
