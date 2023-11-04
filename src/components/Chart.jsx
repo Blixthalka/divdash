@@ -2,7 +2,7 @@ import { graphic } from 'echarts';
 import ReactECharts from 'echarts-for-react';
 import React from 'react';
 
-function Chart({ data, onBarClick }) {
+function Chart({ data, dataName, compare, compareName, onBarClick }) {
     if (!data || data.length === 0) {
         return (<></>)
     }
@@ -47,7 +47,6 @@ function Chart({ data, onBarClick }) {
                 type: 'shadow',
                 shadowStyle: {
                     color: 'rgba(0, 0, 0, 0.1)',
-
                 }
             },
             backgroundColor: '#101418',
@@ -55,9 +54,9 @@ function Chart({ data, onBarClick }) {
             formatter: (args) => {
                 let tooltip = `<p>${args[0].name}</p> `;
 
-                args.forEach(({ marker, value }) => {
-                    value = value || [0, 0];
-                    tooltip += `<p>${marker} <strong>${value} kr</strong></p>`;
+                args.forEach(({ marker, value, seriesName }) => {
+                    value = value || 0;
+                    tooltip += `<p>${marker} <span>${seriesName.includes("series") ? "" : seriesName}<span> <strong>${value} kr</strong></p>`;
                 });
 
                 return tooltip;
@@ -71,7 +70,26 @@ function Chart({ data, onBarClick }) {
             containLabel: true
         },
         series: [
+            compare && {
+                name: compareName,
+                data: compare.map(d => {
+                    return {
+                        name: d?.name,
+                        value: d.value,
+                        id: d?.id
+                    }
+                }),
+                type: 'bar',
+                itemStyle: {
+                    color: new graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: 'rgba(20, 34, 47, 0.7)' },
+                        { offset: 1, color: 'rgba(29, 35, 43, 0.7)' }
+                    ]),
+                    borderRadius: [3, 3, 0, 0],
+                },
+            },
             {
+                name: dataName,
                 data: data.map(d => {
                     return {
                         name: d?.name,
@@ -89,12 +107,7 @@ function Chart({ data, onBarClick }) {
                     borderRadius: [3, 3, 0, 0],
 
                 },
-                emphasis: {
-
-
-                },
-
-            }
+            },
         ],
         stateAnimation: {
             duration: 2000

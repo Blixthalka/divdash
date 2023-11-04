@@ -1,3 +1,4 @@
+import { BinaryIcon, RotateCwIcon, SigmaIcon } from 'lucide-react';
 import moment from 'moment/moment';
 import React, { useContext } from 'react';
 import { AppContext } from '../App';
@@ -31,9 +32,9 @@ function Dashboard() {
     <div className="max-w-5xl pb-20 mx-auto">
       <div className="grid sm:grid-cols-3 gap-5 ">
 
-        <CardSingleNumber title={"Rolling Year"} amount={rolling} currency={"kr"} />
-        <CardSingleNumber title={"Total"} amount={total} currency={"kr"} />
-        <CardSingleNumber title={`# Dividends`} amount={dividends.length} className="" />
+        <CardSingleNumber title={"Rolling Year"} amount={rolling} currency={"kr"} Icon={RotateCwIcon} />
+        <CardSingleNumber title={"Total"} amount={total} currency={"kr"} Icon={SigmaIcon} />
+        <CardSingleNumber title={`# Dividends`} amount={dividends.length} className="" Icon={BinaryIcon} />
 
         <DividendYearCard className="sm:col-span-3" />
         <ContributionCard className="sm:col-span-3" />

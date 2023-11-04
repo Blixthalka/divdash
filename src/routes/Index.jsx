@@ -52,9 +52,6 @@ const Index = function () {
                 </NavLink>
             </div>
 
-
-
-
             <div className="grid md:grid-cols-2  my-32 gap-10">
                 <Card className="text-white ">
                     <div className="flex items-center mb-3">

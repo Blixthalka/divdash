@@ -8,7 +8,7 @@ import DividendMonthCard from '../components/DividendMonthCard';
 import DividendTable from '../components/DividendTable';
 import InstrumentChartCard from '../components/InstrumentChartCard';
 import ContributionCard from '../components/ContributionCard';
-import { ChevronRightIcon, ChevronLeftIcon, XIcon } from 'lucide-react'
+import { ChevronRightIcon, ChevronLeftIcon, XIcon, CalendarIcon, SigmaIcon } from 'lucide-react'
 import Calendar from '../components/Calendar'
 
 function DashboardYear() {
@@ -62,9 +62,24 @@ function DashboardYear() {
                     </Link>
                 </div>
 
-                <CardSingleNumber title={"Year"} amount={thisYear} change={yearChange} currency={"kr"} />
-                <CardSingleNumber title={"Per Month"} amount={perMonth} currency={"kr"} />
-                <CardSingleNumber title={"# Dividends"} amount={filtered.length} />
+                <CardSingleNumber
+                    title={"Year"}
+                    amount={thisYear}
+                    change={yearChange}
+                    currency={"kr"}
+
+                />
+                <CardSingleNumber
+                    title={"Per Month"}
+                    amount={perMonth}
+                    currency={"kr"}
+                    Icon={CalendarIcon}
+                />
+                <CardSingleNumber
+                    title={"# Dividends"}
+                    amount={filtered.length}
+                    Icon={SigmaIcon}
+                />
 
                 <DividendMonthCard year={params.year} className="col-span-3" />
                 <InstrumentChartCard year={params.year} className="col-span-3" />

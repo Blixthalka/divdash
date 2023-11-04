@@ -5,16 +5,9 @@ import Chart from '../components/Chart';
 import { demoDividends } from '../utils/demo';
 export const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
-function DividendMonthCard({ year, demo, className }) {
-    const { dividends } = useContext(AppContext)
 
-
-    let divsToUse = dividends;
-    if (demo) {
-        divsToUse = demoDividends()
-    }
-
-    const data = divsToUse
+function calculate(dividends, year) {
+    const data = dividends
         .filter(div => div.date.year() === parseInt(year))
 
     const yearData = []
@@ -30,6 +23,22 @@ function DividendMonthCard({ year, demo, className }) {
             }
         )
     }
+    return yearData;
+}
+
+
+
+function DividendMonthCard({ year, demo, className }) {
+    const { dividends } = useContext(AppContext)
+
+
+    let divsToUse = dividends;
+    if (demo) {
+        divsToUse = demoDividends()
+    }
+
+    const yearData = calculate(divsToUse, year)
+    const prevYearData = calculate(divsToUse, year - 1)
 
     if (yearData === undefined || yearData.length === 0) {
         return (<></>)
@@ -41,7 +50,12 @@ function DividendMonthCard({ year, demo, className }) {
             className={`${className}`}
             screenshot={true}
         >
-            <Chart data={yearData} />
+            <Chart
+                data={yearData}
+                dataName={year}
+                compare={prevYearData}
+                compareName={year - 1}
+            />
         </Card>
     );
 }

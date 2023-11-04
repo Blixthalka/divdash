@@ -47,7 +47,8 @@ function Calendar({ className, demo, year }) {
             label: name.slice(0, 4),
             name: name,
             id: isin,
-            months: ret
+            months: ret,
+            total: ret.reduce((acc, val) => acc + val, 0)
         }
 
         result.push(val)
@@ -63,7 +64,6 @@ function Calendar({ className, demo, year }) {
         if (nameA > nameB) {
             return 1;
         }
-
         return 0;
     })
 
@@ -81,12 +81,9 @@ function Calendar({ className, demo, year }) {
     }
 
 
-
     if (data.length === 0) {
         return (<></>)
     }
-
-
 
 
     return (
@@ -98,6 +95,7 @@ function Calendar({ className, demo, year }) {
                         {months.map(month => (
                             <th className='text-right text-white font-normal border border-card-off p-2 '>{month}</th>
                         ))}
+                        <th className='text-right text-white font-normal border border-card-off p-2 '>Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,20 +105,18 @@ function Calendar({ className, demo, year }) {
                             {instr.months.map(m => (
                                 <td className='text-secondary group-hover:text-white text-right font-normal border border-card-off p-2'>{m === 0 ? "" : formatNumberNoFractions(m)}</td>
                             ))}
+                            <td className='text-white text-right border border-card-off p-2'>{formatNumberNoFractions(instr.total)}</td>
                         </tr>
                     ))}
                     <tr>
-                        <td className='text-white  font-bold border border-card-off p-2'>Total</td>
+                        <td className='text-white border border-card-off p-2'>Total</td>
                         {data.total.map(tot_month => (
-                            <td className='text-white text-right font-bold border border-card-off p-2'>{tot_month === 0 ? "" : formatNumberNoFractions(tot_month)}</td>
+                            <td className='text-white text-right border border-card-off p-2'>{tot_month === 0 ? "" : formatNumberNoFractions(tot_month)}</td>
                         ))}
+                        <td className='text-primary text-right font-bold border border-card-off p-2'>{formatNumberNoFractions(data.total_total)}</td>
                     </tr>
-                    <tr>
-                        <td className='text-white  font-bold border border-card-off p-2'>Total Year</td>
-                        <td className='text-white text-right   font-bold border border-card-off p-2'>{formatNumberNoFractions(data.total_total)}</td>
-                    </tr>
-                </tbody>
 
+                </tbody>
             </table>
         </Card>
 
