@@ -1,4 +1,4 @@
-import { BinaryIcon, CalendarIcon, ChevronLeftIcon, ChevronRightIcon, XIcon } from 'lucide-react';
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon, HashIcon, XIcon } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import { AppContext } from '../App';
@@ -74,9 +74,9 @@ function DashboardYear() {
                     Icon={CalendarIcon}
                 />
                 <CardSingleNumber
-                    title={"# Dividends"}
+                    title={"Num Dividends"}
                     amount={filtered.length}
-                    Icon={BinaryIcon}
+                    Icon={HashIcon}
                 />
 
                 <DividendMonthCard year={params.year} className="col-span-3" />

@@ -11,13 +11,16 @@ export const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', '
 function calculate(dividends, year) {
     const data = dividends
         .filter(div => div.date.year() === parseInt(year))
+    return calculatez(data)
+}
 
+function calculatez(dividends) {
     const yearData = []
     for (let i = 0; i < months.length; i++) {
         yearData.push(
             {
                 label: months[i],
-                value: data
+                value: dividends
                     .filter(div => {
                         return div.date.month() === i
                     })
