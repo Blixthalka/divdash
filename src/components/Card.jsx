@@ -14,10 +14,20 @@ function Card({ title, useIcognito, useScreenshot, zoomedTitle, children, classN
   const [show, setShow] = useState(false)
   const [isIcognito, setIsIcognito] = useState(false)
 
-  const takeScreenshot = useCallback(() => {
+  const takeScreenshot = useCallback(async () => {
     if (ref.current === null) {
       return
     }
+
+    // call it multiple times to avoid safari bugg lol
+    var ua = navigator.userAgent.toLowerCase();
+    console.log(ua.search("safari") >= 0 && ua.search("chrome") < 0)
+    if (ua.search("safari") >= 0 && ua.search("chrome") < 0) {
+      await toPng(ref.current, { cacheBust: true })
+      await toPng(ref.current, { cacheBust: true })
+      await toPng(ref.current, { cacheBust: true })
+    }
+
 
     toPng(ref.current, { cacheBust: true })
       .then((dataUrl) => {

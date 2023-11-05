@@ -12,7 +12,6 @@ function Calendar({ className, demo, year }) {
     if (demo) {
         divsToUse = demoDividends()
     }
-    console.log(divsToUse)
 
     const valid = divsToUse
         .filter(div => year ? div.date.year() === parseInt(year) : true)
