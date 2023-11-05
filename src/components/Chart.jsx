@@ -1,9 +1,11 @@
 import { graphic } from 'echarts';
 import ReactECharts from 'echarts-for-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { formatNumberNoFractions } from '../utils/util';
+import { ChartContext } from './Card';
 
-function Chart({ data, dataName, compare, compareName, onBarClick }) {
+function Chart({ data, goals, dataName, compare, compareName, onBarClick }) {
+    const { isIcognito } = useContext(ChartContext)
     if (!data || data.length === 0) {
         return (<></>)
     }
@@ -26,6 +28,7 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
             type: 'value',
             axisLabel: {
                 fontSize: 14,
+                show: !isIcognito,
                 formatter: function (value, i) {
                     return formatNumberNoFractions(value)
                 }
@@ -57,13 +60,13 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
             borderColor: '#1D232B',
             formatter: (args) => {
                 let tooltip = `<p>${args[0].name}</p> `;
-
+                tooltip += " <table>"
                 args.forEach(({ marker, value, seriesName }) => {
                     value = value || 0;
-                    tooltip += `<p>${marker} <span>${seriesName.includes("series") ? "" : seriesName}<span> <strong>${formatNumberNoFractions(value)} kr</strong></p>`;
+                    tooltip += `<tr><td>${marker} <span>${seriesName.includes("series") ? "" : seriesName}<span></td> <td style="text-align: right; padding-left: 15px;"><strong >${formatNumberNoFractions(value)} kr</strong></td></tr>`;
                 });
 
-                return tooltip;
+                return tooltip += "</table>";
             },
             rich: {
                 yearStyle: {
@@ -84,6 +87,12 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
             containLabel: true
         },
         series: [
+            goals && {
+                type: 'line',
+                color: 'white',
+                name: "Goals",
+                data: goals
+            },
             compare && {
                 name: compareName,
                 data: compare.map(d => {
@@ -117,9 +126,7 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
                         { offset: 0, color: '#179BF5' },
                         { offset: 1, color: '#0E568E' }
                     ]),
-
                     borderRadius: [3, 3, 0, 0],
-
                 },
             },
         ],
@@ -138,15 +145,19 @@ function Chart({ data, dataName, compare, compareName, onBarClick }) {
 
     return (
         <div className=''>
-            {compare && <div className='flex items-center space-x-5 text-white text-sm'>
-                <span className='flex space-x-2 items-center'>
+            {(compare || goals) && <div className='flex items-center space-x-5 text-white text-sm'>
+                {compare && (<span className='flex space-x-2 items-center'>
                     <p className='w-3 h-3 bg-orange-400 rounded-full' />
                     <span className=''>{compareName}</span>
-                </span>
+                </span>)}
                 <span className='flex space-x-2 items-center'>
                     <p className='w-3 h-3 bg-[#179BF5] rounded-full' />
                     <span className=''>{dataName}</span>
                 </span>
+                {goals && (<span className='flex space-x-2 items-center'>
+                    <p className='w-3 h-3 bg-white rounded-full' />
+                    <span className=''>{"Goals"}</span>
+                </span>)}
 
             </div>}
             <ReactECharts

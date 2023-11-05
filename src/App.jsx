@@ -31,11 +31,16 @@ function fetchSettingsLocalStorage() {
     const json = localStorage.getItem("settings");
     if (!json) {
         return {
-            merge: []
+            merge: [],
+            goals: []
         }
     }
 
-    return JSON.parse(json)
+    const values = JSON.parse(json)
+    return {
+        merge: values?.merge || [],
+        goals: (values?.goals || []).sort((a, b) => a.year > b.year ? -1 : 1)
+    }
 }
 
 

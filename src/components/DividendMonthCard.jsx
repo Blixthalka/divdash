@@ -1,10 +1,10 @@
+import { ArrowLeftRightIcon } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../App';
 import Card from '../components/Card';
 import Chart from '../components/Chart';
 import { demoDividends } from '../utils/demo';
 import ButtonIcon from './ButtonIcon';
-import { ZapIcon, ZapOffIcon } from 'lucide-react';
 export const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
 
@@ -54,9 +54,11 @@ function DividendMonthCard({ year, demo, className }) {
             title={'Monthly Dividends'}
             zoomedTitle={showCompare ? undefined : `Monthly Dividends ${year}`}
             className={`${className}`}
-            screenshot={true}
+            useScreenshot={true}
+            useIcognito={true}
             settings={<ButtonIcon
-                Icon={showCompare ? ZapIcon : ZapOffIcon}
+                Icon={ArrowLeftRightIcon}
+                selected={showCompare}
                 onClick={() => setShowCompare(!showCompare)}
             />}
         >
@@ -67,6 +69,7 @@ function DividendMonthCard({ year, demo, className }) {
                     dataName={year}
                     compare={prevYearData}
                     compareName={year - 1}
+                    markLine={true}
                 />
                 : <Chart
                     data={yearData}

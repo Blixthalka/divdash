@@ -14,6 +14,14 @@ const months = [
 ]
 
 
+export const findGoal = (goals, year) => {
+    const r = goals.filter(goal => goal.year === year)
+    if (r.length > 0) {
+      return r[0]
+    }
+    return undefined;
+}
+
 export const sortFirstDateFirst = (a, b) => {
   if (b.date.calendar() === a.date.calendar()) {
       return 0;

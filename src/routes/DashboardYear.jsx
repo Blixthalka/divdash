@@ -1,4 +1,4 @@
-import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon, HashIcon, XIcon } from 'lucide-react';
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon, XIcon } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import { AppContext } from '../App';
@@ -9,6 +9,7 @@ import CardSingleNumber from '../components/CardSingleNumber';
 import ContributionCard from '../components/ContributionCard';
 import DividendMonthCard from '../components/DividendMonthCard';
 import DividendTable from '../components/DividendTable';
+import GoalProgressCard from '../components/GoalProgressCard';
 import InstrumentChartCard from '../components/InstrumentChartCard';
 
 function DashboardYear() {
@@ -65,25 +66,21 @@ function DashboardYear() {
                     amount={thisYear}
                     change={yearChange}
                     currency={"kr"}
-
                 />
                 <CardSingleNumber
-                    title={"Per Month"}
+                    title={"Per Month (average)"}
                     amount={perMonth}
                     currency={"kr"}
                     Icon={CalendarIcon}
                 />
-                <CardSingleNumber
-                    title={"Num Dividends"}
-                    amount={filtered.length}
-                    Icon={HashIcon}
-                />
+
+                <GoalProgressCard year={parseInt(params.year)} />
 
                 <DividendMonthCard year={params.year} className="col-span-3" />
                 <InstrumentChartCard year={params.year} className="col-span-3" />
                 <ContributionCard className="col-span-3" year={year} />
 
-                <Calendar className={"col-span-3"} year={year}/>
+                <Calendar className={"col-span-3"} year={year} />
 
                 <Card
                     title="Dividends"

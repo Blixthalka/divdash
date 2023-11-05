@@ -60,7 +60,12 @@ const IntrumentChartCard = ({ year, demo, className }) => {
     }
 
     return (
-        <Card title={"Dividends per Stock"} className={`grid gap-2 ${className}`} screenshot={true}>
+        <Card
+            title={"Dividends per Stock"}
+            className={`grid gap-2 ${className}`}
+            useScreenshot
+            useIcognito
+        >
             <Chart
                 data={data}
                 dataName={year}

@@ -1,5 +1,5 @@
 
-import { BarChartIcon, ChevronLeft, ChevronRight, LayersIcon, LockIcon, Share2Icon } from 'lucide-react';
+import { BarChartIcon, CameraIcon, ChevronLeft, ChevronRight, CoinsIcon, FlagTriangleRightIcon, LayersIcon, LockIcon } from 'lucide-react';
 import { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import AccumCard from '../components/AccumCard';
@@ -14,6 +14,19 @@ import InstrumentChartCard from '../components/InstrumentChartCard';
 import Avanza from '../images/avanza.svg';
 import Nordnet from '../images/nordnet.svg';
 import screenshot from './../images/screenshot.png';
+
+
+const SmallInfoCard = ({ Icon, title, text }) => {
+    return (
+        <Card className="text-white ">
+            <div className="flex items-center mb-3">
+                <Icon className="w-5 h-5 mr-3 stroke-primary" />
+                <p className="text-lg font-medium">{title}</p>
+            </div>
+            <p className="text-secondary">{text}</p>
+        </Card>
+    )
+}
 
 const Index = function () {
     const [selectedDemo, setSelectedDemo] = useState(0)
@@ -52,35 +65,46 @@ const Index = function () {
                 </NavLink>
             </div>
 
-            <div className="grid md:grid-cols-2  my-32 gap-10">
-                <Card className="text-white ">
-                    <div className="flex items-center mb-3">
-                        <BarChartIcon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-lg font-medium">Charts</p>
-                    </div>
-                    <p className="text-secondary">An abundance of charts to explore.</p>
-                </Card>
-                <Card className="text-white ">
-                    <div className="flex items-center mb-3">
-                        <LayersIcon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-lg font-medium">Aggregate</p>
-                    </div>
-                    <p className="text-secondary">Have multiple banks? No problem.</p>
-                </Card>
-                <Card className="text-white ">
-                    <div className="flex items-center mb-3">
-                        <LockIcon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-lg font-medium">Secure</p>
-                    </div>
-                    <p className="text-secondary">Your data stays in your browser.</p>
-                </Card>
-                <Card className="text-white ">
-                    <div className="flex items-center mb-3">
-                        <Share2Icon className="w-5 h-5 mr-3 stroke-primary" />
-                        <p className="text-lg font-medium">Share</p>
-                    </div>
-                    <p className="text-secondary">A breeze to share to your socials.</p>
-                </Card>
+            <div className="grid md:grid-cols-2 my-32 gap-10">
+                <SmallInfoCard
+                    Icon={BarChartIcon}
+                    title="Charts"
+                    text="An abundance of charts to explore."
+                />
+
+                <SmallInfoCard
+                    Icon={LayersIcon}
+                    title="Aggregate"
+                    text="Have multiple banks? No problem."
+                />
+
+
+                <SmallInfoCard
+                    Icon={LockIcon}
+                    title="Secure"
+                    text="Your data stays in your browser."
+                />
+
+                <SmallInfoCard
+                    Icon={CameraIcon}
+                    title="Share"
+                    text="A breeze to take screenshots and share to your socials."
+                />
+
+                <SmallInfoCard
+                    Icon={FlagTriangleRightIcon}
+                    title="Goals"
+                    text="Set ambitious goals and achieve them."
+                />
+
+                <SmallInfoCard
+                    Icon={CoinsIcon}
+                    title="Free"
+                    text="100% free to use."
+                />
+
+
+
             </div>
 
             <div className={"my-32 sm:hidden"}>

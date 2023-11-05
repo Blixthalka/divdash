@@ -44,7 +44,6 @@ function ChartToggle({ className }) {
                         <span className="text-white text-sm">divdash</span>
                     </div>
                     <div className='flex items-center space-x-3'>
-
                         <Button text={"Add Dividends"} design="primary" onClick={(e) => navigate("/upload")} />
                         <NavLink to="/settings">
                             <ButtonIcon Icon={SettingsIcon} />

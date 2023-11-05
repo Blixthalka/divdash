@@ -1,4 +1,4 @@
-import { HashIcon, SigmaIcon } from 'lucide-react';
+import { SigmaIcon } from 'lucide-react';
 import moment from 'moment/moment';
 import React, { useContext } from 'react';
 import { AppContext } from '../App';
@@ -9,11 +9,11 @@ import ContributionCard from '../components/ContributionCard';
 import DividendTable from '../components/DividendTable';
 import DividendYearCard from '../components/DividendYearCard';
 import Empty from '../components/Empty';
+import GoalProgressCard from '../components/GoalProgressCard';
 import InstrumentChartCard from '../components/InstrumentChartCard';
 
 function Dashboard() {
   const { dividends } = useContext(AppContext)
-
 
   const total = dividends
     .reduce((acc, value) => acc + value.amount, 0)
@@ -29,8 +29,6 @@ function Dashboard() {
 
   const growth = ((rolling - prevRolling) / prevRolling) * 100
 
-  console.log(prevRolling)
-
 
   if (total === 0) {
     return (
@@ -43,7 +41,7 @@ function Dashboard() {
       <div className="grid sm:grid-cols-3 gap-5 ">
         <CardSingleNumber title={"Rolling Year"} amount={rolling} currency={"kr"} change={growth} />
         <CardSingleNumber title={"Total"} amount={total} currency={"kr"} Icon={SigmaIcon} />
-        <CardSingleNumber title={`Num Dividends`} amount={dividends.length} Icon={HashIcon} />
+        <GoalProgressCard year={moment().year()} />
 
         <DividendYearCard className="sm:col-span-3" />
         <ContributionCard className="sm:col-span-3" />

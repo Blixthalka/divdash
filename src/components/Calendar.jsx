@@ -87,7 +87,7 @@ function Calendar({ className, demo, year }) {
 
 
     return (
-        <Card title={'Dividend Calendar'} className={`w-full ${className}`} screenshot={true}>
+        <Card title={'Dividend Calendar'} className={`w-full ${className}`} useScreenshot={true}>
             <table className='w-full mt-3 text-sm'>
                 <thead>
                     <tr>

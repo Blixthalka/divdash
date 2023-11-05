@@ -1,13 +1,13 @@
-.active > div {
-    @apply text-primary bg-slate-50 border border-slate-300  fill-primary;
+.active>div {
+    @apply text-primary bg-slate-50 border border-slate-300 fill-primary;
 }
 
-.active > div > svg {
+.active>div>svg {
     @apply !fill-primary;
 }
 
-.nav-link > div {
-    @apply p-2 hover:bg-slate-100 group-hover:text-primary fill-secondary rounded-lg ;
+.nav-link>div {
+    @apply p-2 hover:bg-slate-100 group-hover:text-primary fill-secondary rounded-lg;
 }
 
 
