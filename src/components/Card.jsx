@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ButtonIcon from './ButtonIcon';
 import Info from './Info';
 import IcognitoButton from './IcognitoButton';
+import ReactGA from 'react-ga';
 
 export const ChartContext = createContext();
 
@@ -24,6 +25,10 @@ function Card({ title, useIcognito, useScreenshot, zoomedTitle, children, classN
         link.download = uuidv4() + '.png'
         link.href = dataUrl
         link.click()
+        ReactGA.event({
+          category: 'User',
+          action: 'Took a screenshot'
+        });
       })
       .catch((err) => {
         console.log(err)
@@ -33,7 +38,6 @@ function Card({ title, useIcognito, useScreenshot, zoomedTitle, children, classN
   const BaseSettings = () => (
     <>
       {settings}
-
     </>
   )
 
