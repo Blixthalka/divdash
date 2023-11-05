@@ -3,8 +3,12 @@ import { Outlet } from "react-router-dom";
 import './app.css'
 import { ToastContextProvider } from './components/ToastContex'
 import moment from 'moment/moment';
+import ReactGA from 'react-ga';
+
 
 export const AppContext = createContext();
+
+ReactGA.initialize('G-RWVMJK7H71');
 
 
 function fetchDividendsLocalStorage() {
