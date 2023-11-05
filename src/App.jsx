@@ -9,7 +9,7 @@ import ReactGA from 'react-ga';
 export const AppContext = createContext();
 
 ReactGA.initialize('G-RWVMJK7H71');
-
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 function fetchDividendsLocalStorage() {
     const json = localStorage.getItem("dividends");
