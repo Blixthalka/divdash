@@ -58,16 +58,6 @@ function Chart({ data, goals, dataName, compare, compareName, onBarClick }) {
             },
             backgroundColor: '#101418',
             borderColor: '#1D232B',
-            formatter: (args) => {
-                let tooltip = `<p>${args[0].name}</p> `;
-                tooltip += " <table>"
-                args.forEach(({ marker, value, seriesName }) => {
-                    value = value || 0;
-                    tooltip += `<tr><td>${marker} <span>${seriesName.includes("series") ? "" : seriesName}<span></td> <td style="text-align: right; padding-left: 15px;"><strong >${formatNumberNoFractions(value)} kr</strong></td></tr>`;
-                });
-
-                return tooltip += "</table>";
-            },
             rich: {
                 yearStyle: {
                     // Make yearly text more standing out
@@ -91,7 +81,13 @@ function Chart({ data, goals, dataName, compare, compareName, onBarClick }) {
                 type: 'line',
                 color: 'white',
                 name: "Goals",
-                data: goals
+                data: goals,
+                smooth: false,
+                tooltip: {
+                    valueFormatter: function (value) {
+                        return formatNumberNoFractions(value) + ' kr';
+                    }
+                },
             },
             compare && {
                 name: compareName,
@@ -110,6 +106,11 @@ function Chart({ data, goals, dataName, compare, compareName, onBarClick }) {
                     ]),
                     borderRadius: [3, 3, 0, 0],
                 },
+                tooltip: {
+                    valueFormatter: function (value) {
+                        return formatNumberNoFractions(value) + ' kr';
+                    }
+                },
             },
             {
                 name: dataName,
@@ -127,6 +128,11 @@ function Chart({ data, goals, dataName, compare, compareName, onBarClick }) {
                         { offset: 1, color: '#0E568E' }
                     ]),
                     borderRadius: [3, 3, 0, 0],
+                },
+                tooltip: {
+                    valueFormatter: function (value) {
+                        return formatNumberNoFractions(value) + ' kr';
+                    }
                 },
             },
         ],
