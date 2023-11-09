@@ -46,7 +46,7 @@ function Dashboard() {
     <div className="max-w-5xl pb-20 mx-auto">
       <div className="grid sm:grid-cols-3 gap-5 ">
         <CardSingleNumber title={"Rolling Year"} amount={rolling} currency={"kr"} change={growth} />
-        <CardSingleNumber title={"Total"} amount={total} currency={"kr"} change={cagr} changeLabel={"Growth / Year"} />
+        <CardSingleNumber title={"Total"} amount={total} currency={"kr"} change={cagr} changeLabel={"cagr"} />
         <GoalProgressCard year={moment().year()} />
 
         <DividendYearCard className="sm:col-span-3" />
