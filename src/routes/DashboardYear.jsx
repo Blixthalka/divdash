@@ -11,6 +11,9 @@ import DividendMonthCard from '../components/DividendMonthCard';
 import DividendTable from '../components/DividendTable';
 import GoalProgressCard from '../components/GoalProgressCard';
 import InstrumentChartCard from '../components/InstrumentChartCard';
+import { sumForYear } from '../utils/util';
+
+
 
 function DashboardYear() {
     const { dividends } = useContext(AppContext)
@@ -23,13 +26,8 @@ function DashboardYear() {
         direction: "desc"
     });
 
-    const filtered = dividends.filter(div => div.date.year() === year)
-
-    const thisYear = filtered
-        .reduce((acc, val) => acc + val.amount, 0)
-
-    const lastYear = dividends.filter(div => div.date.year() === (year - 1))
-        .reduce((acc, val) => acc + val.amount, 0)
+    const thisYear = sumForYear(dividends, year)
+    const lastYear = sumForYear(dividends, year - 1)
 
     let yearChange = undefined;
     if (lastYear !== 0) {

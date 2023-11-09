@@ -13,6 +13,11 @@ const months = [
   'dec'
 ]
 
+export function sumForYear(dividends, year) {
+  return dividends
+      .filter(div => div.date.year() === year)
+      .reduce((acc, val) => acc + val.amount, 0)
+}
 
 export const findGoal = (goals, year) => {
     const r = goals.filter(goal => goal.year === year)
