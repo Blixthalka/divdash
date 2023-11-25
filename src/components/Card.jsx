@@ -77,9 +77,12 @@ function Card({ title, useIcognito, useScreenshot, zoomedTitle, children, classN
               <ButtonIcon Icon={CameraIcon} onClick={takeScreenshot} />
               <ButtonIcon Icon={XIcon} onClick={() => setShow(false)} />
             </div>
-            <div ref={ref} className='bg-card p-14'>
+            <div ref={ref} className='bg-card p-14 pb-10'>
               <p className='text-white text-xl font-medium mb-3'>{zoomedTitle ? zoomedTitle : title}</p>
               {children}
+              <p className='flex text-sm justify-center mt-10 text-secondary '>
+                <span className='text-secondary'>divdash.blixthalka.com</span>
+              </p>
             </div>
           </div>
         )}
