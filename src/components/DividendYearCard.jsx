@@ -51,12 +51,11 @@ function DividendYearCard({ name, isin, demo, className }) {
 
     const years = fillData(filtered)
 
-
     if (years === undefined) {
         return (<></>)
     }
 
-    const yy = [...new Set(divsToUse.map(div => div.date.year()))]
+    const yy = [...new Set(years.map(div => div.label))]
         .sort((a, b) => a > b ? 1 : -1)
 
     const goals = yy.map(year => findGoal(goalsToUse, year)?.amount || "-")
