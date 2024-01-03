@@ -13,7 +13,7 @@ function Chart({ data, goals, dataName, compare, compareName, onBarClick }) {
     let option = {
         textStyle: {
             color: '#595F6B',
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'geist, sans-serif',
         },
         backgroundColor: '#101418',
         xAxis: {

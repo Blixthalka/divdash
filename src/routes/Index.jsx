@@ -114,7 +114,7 @@ const Index = function () {
             <div className='my-32 hidden sm:block'>
                 <div className='flex justify-center flex-col space-y-3 items-center mb-5'>
                     <div className='flex space-x-1.5  text-xl font-medium'>
-                        <span className='text-white'>{"How it coud look lite"}</span>s
+                        <span className='text-white'>{"How it coud look like"}</span>s
                     </div>
 
 
