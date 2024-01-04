@@ -70,8 +70,8 @@ function Chart({ data, goals, dataName, compare, compareName, onBarClick }) {
             }
         },
         grid: {
-            left: '1%',
-            right: '1%',
+            left: '5%',
+            right: '5%',
             bottom: '1%',
             top: '10%',
             containLabel: true
