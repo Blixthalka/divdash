@@ -70,9 +70,9 @@ function Chart({ data, goals, dataName, compare, compareName, onBarClick }) {
             }
         },
         grid: {
-            left: '5%',
-            right: '5%',
-            bottom: '1%',
+            left: '2%',
+            right: '2%',
+            bottom: '2%',
             top: '10%',
             containLabel: true
         },
