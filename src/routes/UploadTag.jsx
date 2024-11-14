@@ -27,7 +27,7 @@ const parseAvanza = (fileText, settings) => {
                 quantity: parseFloat(row[4]),
                 dividend: parseFloat(row[5]),
                 amount: parseFloat(row[6]),
-                isin: findNewIsin(settings, row[9]),
+                isin: findNewIsin(settings, row[11]),
                 tag: "avanza"
             }
         })
